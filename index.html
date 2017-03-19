@@ -247,7 +247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/sgradio/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/Swift summary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiang Nan">
@@ -269,8 +269,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/19/sgradio/" itemprop="url">
-                  About sgRaido apps
+                <a class="post-title-link" href="/2017/03/19/Swift summary/" itemprop="url">
+                  Summary of Swift
                 </a>
               
             
@@ -324,17 +324,36 @@
       
         
           
-            <h2 id="sgRadio-Apps"><a href="#sgRadio-Apps" class="headerlink" title="sgRadio Apps"></a>sgRadio Apps</h2><h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>```swift<br>    func configureMailComposeViewController(recepients: [String], subject: String, messageBody: String) -&gt; MFMailComposeViewController {</p>
-<pre><code>    let mailComposerVC = MFMailComposeViewController()
-    mailComposerVC.mailComposeDelegate = self
+            <h1 id="Summary-of-Swift-development"><a href="#Summary-of-Swift-development" class="headerlink" title="Summary of Swift development"></a>Summary of Swift development</h1><p>The summary of Swift development.<br>Swift version: 3.0<br>Xcode version: 8.2.1</p>
+<ol>
+<li><a href="#UIButton">UIButton</a>: To add action to UIButton</li>
+<li><a href="#Singleton">Singleton class</a>: How to create and use Singleton class</li>
+<li><a href="#Navigationbar">Navigation bar</a>: Navigation bar usage</li>
+<li><a href="#Alertcontroller">Alert Controller</a>: Alertcontroller usage</li>
+<li><a href="#Rateapp">Rate Apps in Appstore</a>: Rate App in Appstore</li>
+</ol>
+<ol>
+<li><p><a name="UIButton"></a> UIButton usage</p>
+<ul>
+<li>Add target to UIButton.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">button.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">MyClass</span>.buttonTapped),</div><div class="line">                forControlEvents: .<span class="type">TouchUpInside</span>)</div></pre></td></tr></table></figure></li>
+<li>Add bar button and its action.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> barbutton = <span class="type">UIBarButtonItem</span>(title: <span class="string">"save"</span>, style: <span class="type">UIBarButtonItemStyle</span>.<span class="type">Plain</span>, </div><div class="line">    target: <span class="keyword">self</span>, action: #selector(saveAlbum))</div><div class="line"><span class="keyword">self</span>.navigationItem.rightBarButtonItem = barbutton</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="Singleton"></a> Singleton class usage</p>
+ <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">currentUserInfo</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">let</span> sharedCurrentUserInstance = currentUserInfo()</div><div class="line">    <span class="keyword">var</span> userRealName = <span class="string">""</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">init</span>() &#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> a = currentUserInfo.sharedCurrentUserInstance.userRealName</div></pre></td></tr></table></figure>
+</li>
+<li><p><a name="Navigationbar"></a> Navigation bar usage</p>
+<ul>
+<li>Add bar button and its action<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">let</span> barbutton = <span class="type">UIBarButtonItem</span>(title: <span class="string">"save"</span>, style: <span class="type">UIBarButtonItemStyle</span>.<span class="type">Plain</span>, </div><div class="line">	target: <span class="keyword">self</span>, action: #selector(saveAlbum))</div><div class="line"><span class="keyword">self</span>.navigationItem.rightBarButtonItem = barbutton</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="Alertcontroller"></a> Alert controller usage</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">reportSpamMail</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="string">"Report"</span>, message: <span class="string">"Report spam number"</span>, preferredStyle: .alert)</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> sendAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Report"</span>, style: .<span class="keyword">default</span>, handler: &#123;(<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">        <span class="keyword">let</span> receipients = [<span class="keyword">self</span>.mailAddress]</div><div class="line">        <span class="keyword">let</span> subject = <span class="string">"From sgCallerID"</span></div><div class="line">        <span class="keyword">let</span> messagebody = <span class="string">""</span></div><div class="line">        </div><div class="line">        <span class="keyword">let</span> mailVC = <span class="keyword">self</span>.configureMail(receipients: receipients, subject: subject, messageBody: messagebody)</div><div class="line">        <span class="keyword">if</span> <span class="type">MFMailComposeViewController</span>.canSendMail() &#123;</div><div class="line">            <span class="keyword">self</span>.present(mailVC, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> cancelAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Cancel"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>)</div><div class="line">    alertController.addAction(sendAction)</div><div class="line">    alertController.addAction(cancelAction)</div><div class="line">    </div><div class="line">    present(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">    </div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
+<li><a name="Rateapp"></a> Rate App in Appstore<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">rateApp</span><span class="params">(appId:String, completion: @escaping <span class="params">(<span class="params">(<span class="number">_</span> success: Bool)</span></span></span></span> -&gt;())) &#123;</div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> url = <span class="type">URL</span>(string: <span class="string">"itms-apps://itunes.apple.com/app/"</span> + appId) <span class="keyword">else</span> &#123;</div><div class="line">        completion(<span class="literal">false</span>)</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">guard</span> #available(iOS <span class="number">10</span>, *) <span class="keyword">else</span> &#123;</div><div class="line">        completion(<span class="type">UIApplication</span>.shared.openURL(url))</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="type">UIApplication</span>.shared.open(url, options: [:], completionHandler: completion)</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
+</ol>
 
-    mailComposerVC.setToRecipients(recepients)
-    mailComposerVC.setSubject(subject)
-    mailComposerVC.setMessageBody(messageBody, isHTML: false)
-
-    return mailComposerVC
-}
-</code></pre>
           
         
       
