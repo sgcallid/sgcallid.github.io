@@ -247,6 +247,136 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/sgradio/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiang Nan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JIANG NAN BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/19/sgradio/" itemprop="url">
+                  About sgRaido apps
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-19T00:00:00+08:00">
+                2017-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="sgRadio-Apps"><a href="#sgRadio-Apps" class="headerlink" title="sgRadio Apps"></a>sgRadio Apps</h2><h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>```swift<br>    func configureMailComposeViewController(recepients: [String], subject: String, messageBody: String) -&gt; MFMailComposeViewController {</p>
+<pre><code>    let mailComposerVC = MFMailComposeViewController()
+    mailComposerVC.mailComposeDelegate = self
+
+    mailComposerVC.setToRecipients(recepients)
+    mailComposerVC.setSubject(subject)
+    mailComposerVC.setMessageBody(messageBody, isHTML: false)
+
+    return mailComposerVC
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/15/test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -270,7 +400,7 @@
               
                 
                 <a class="post-title-link" href="/2017/03/15/test/" itemprop="url">
-                  Untitled
+                  First Blog
                 </a>
               
             
@@ -286,7 +416,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-15T11:16:01+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-15T00:00:00+08:00">
                 2017-03-15
               </time>
             
@@ -337,6 +467,8 @@
 <li>After download App from App store, go to setting -&gt; phone -&gt; Call Blocking &amp; Identification</li>
 <li>Enable sgCaller - Tier 1/2 to allow this Apps provide Caller ID</li>
 </ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getUrls</span><span class="params">(filename)</span>:</span></div><div class="line">    urls = []</div><div class="line">    <span class="keyword">with</span> open(filename) <span class="keyword">as</span> fp:</div><div class="line">        d = json.load(fp)</div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> d:</div><div class="line">        urls.append([key, d[key]]) </div><div class="line">    <span class="keyword">return</span> urls</div></pre></td></tr></table></figure>
+<h2 id="Icon-image"><a href="#Icon-image" class="headerlink" title="Icon image"></a>Icon image</h2><p><img src="../images/1.png" alt="test image"></p>
 
           
         
@@ -416,7 +548,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -424,6 +556,15 @@
 
           
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
           
 
         </nav>
