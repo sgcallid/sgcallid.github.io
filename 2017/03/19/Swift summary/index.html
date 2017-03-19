@@ -101,7 +101,7 @@ Navigati">
 UIButton: To add action to UIButton
 Singleton class: How to create and use Singleton class
 Navigati">
-<meta property="og:updated_time" content="2017-03-19T07:55:26.000Z">
+<meta property="og:updated_time" content="2017-03-19T08:07:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary of Swift">
 <meta name="twitter:description" content="Summary of Swift developmentThe summary of Swift development.Swift version: 3.0Xcode version: 8.2.1
@@ -342,25 +342,25 @@ Navigati">
 <li><a href="#Rateapp">Rate Apps in Appstore</a>: Rate App in Appstore</li>
 </ol>
 <ol>
-<li><p><a name="UIButton"></a> UIButton usage</p>
+<li><p><a name="UIButton"></a> <strong>UIButton usage</strong></p>
 <ul>
 <li>Add target to UIButton.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">button.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">MyClass</span>.buttonTapped),</div><div class="line">                forControlEvents: .<span class="type">TouchUpInside</span>)</div></pre></td></tr></table></figure></li>
 <li>Add bar button and its action.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> barbutton = <span class="type">UIBarButtonItem</span>(title: <span class="string">"save"</span>, style: <span class="type">UIBarButtonItemStyle</span>.<span class="type">Plain</span>, </div><div class="line">    target: <span class="keyword">self</span>, action: #selector(saveAlbum))</div><div class="line"><span class="keyword">self</span>.navigationItem.rightBarButtonItem = barbutton</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li><p><a name="Singleton"></a> Singleton class usage</p>
+<li><p><a name="Singleton"></a> <strong>Singleton class usage</strong></p>
  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">currentUserInfo</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">let</span> sharedCurrentUserInstance = currentUserInfo()</div><div class="line">    <span class="keyword">var</span> userRealName = <span class="string">""</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">init</span>() &#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> a = currentUserInfo.sharedCurrentUserInstance.userRealName</div></pre></td></tr></table></figure>
 </li>
-<li><p><a name="Navigationbar"></a> Navigation bar usage</p>
+<li><p><a name="Navigationbar"></a> <strong>Navigation bar usage</strong></p>
 <ul>
 <li>Add bar button and its action<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">let</span> barbutton = <span class="type">UIBarButtonItem</span>(title: <span class="string">"save"</span>, style: <span class="type">UIBarButtonItemStyle</span>.<span class="type">Plain</span>, </div><div class="line">	target: <span class="keyword">self</span>, action: #selector(saveAlbum))</div><div class="line"><span class="keyword">self</span>.navigationItem.rightBarButtonItem = barbutton</div><div class="line">  </div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li><p><a name="Alertcontroller"></a> Alert controller usage</p>
+<li><p><a name="Alertcontroller"></a> <strong>Alert controller usage</strong></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">reportSpamMail</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="string">"Report"</span>, message: <span class="string">"Report spam number"</span>, preferredStyle: .alert)</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> sendAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Report"</span>, style: .<span class="keyword">default</span>, handler: &#123;(<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">        <span class="keyword">let</span> receipients = [<span class="keyword">self</span>.mailAddress]</div><div class="line">        <span class="keyword">let</span> subject = <span class="string">"From sgCallerID"</span></div><div class="line">        <span class="keyword">let</span> messagebody = <span class="string">""</span></div><div class="line">        </div><div class="line">        <span class="keyword">let</span> mailVC = <span class="keyword">self</span>.configureMail(receipients: receipients, subject: subject, messageBody: messagebody)</div><div class="line">        <span class="keyword">if</span> <span class="type">MFMailComposeViewController</span>.canSendMail() &#123;</div><div class="line">            <span class="keyword">self</span>.present(mailVC, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> cancelAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Cancel"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>)</div><div class="line">    alertController.addAction(sendAction)</div><div class="line">    alertController.addAction(cancelAction)</div><div class="line">    </div><div class="line">    present(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">    </div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
-<li><a name="Rateapp"></a> Rate App in Appstore<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">rateApp</span><span class="params">(appId:String, completion: @escaping <span class="params">(<span class="params">(<span class="number">_</span> success: Bool)</span></span></span></span> -&gt;())) &#123;</div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> url = <span class="type">URL</span>(string: <span class="string">"itms-apps://itunes.apple.com/app/"</span> + appId) <span class="keyword">else</span> &#123;</div><div class="line">        completion(<span class="literal">false</span>)</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">guard</span> #available(iOS <span class="number">10</span>, *) <span class="keyword">else</span> &#123;</div><div class="line">        completion(<span class="type">UIApplication</span>.shared.openURL(url))</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="type">UIApplication</span>.shared.open(url, options: [:], completionHandler: completion)</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
+<li><a name="Rateapp"></a> <strong>Rate App in Appstore</strong><br>To rate the apps in the Appstore<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">rateApp</span><span class="params">(appId:String, completion: @escaping <span class="params">(<span class="params">(<span class="number">_</span> success: Bool)</span></span></span></span> -&gt;())) &#123;</div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> url = <span class="type">URL</span>(string: <span class="string">"itms-apps://itunes.apple.com/app/"</span> + appId) <span class="keyword">else</span> &#123;</div><div class="line">        completion(<span class="literal">false</span>)</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">guard</span> #available(iOS <span class="number">10</span>, *) <span class="keyword">else</span> &#123;</div><div class="line">        completion(<span class="type">UIApplication</span>.shared.openURL(url))</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="type">UIApplication</span>.shared.open(url, options: [:], completionHandler: completion)</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -413,6 +413,10 @@ Navigati">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/19/iOS CallKitManager Usage/" rel="prev" title="iOS CallKitManger Usage in Swift">
+                iOS CallKitManger Usage in Swift <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -484,7 +488,7 @@ Navigati">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
