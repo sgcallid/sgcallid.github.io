@@ -247,6 +247,133 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/30/Hexo command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiang Nan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JIANG NAN BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/30/Hexo command/" itemprop="url">
+                  Hexo Command list
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-30T00:00:00+08:00">
+                2017-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Hexo-command-list"><a href="#Hexo-command-list" class="headerlink" title="Hexo command list"></a>Hexo command list</h1><p>Hexo Command List </p>
+<ol>
+<li>Test blog locally<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"><span class="meta-keyword">$hexo</span> s</span></div></pre></td></tr></table></figure></li>
+<li>Publish blog<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"><span class="meta-keyword">$hexo</span> clean &amp;&amp; hexo g &amp;&amp; hexo d</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="http://www.jianshu.com/p/4eaddcbe4d12" target="_blank" rel="external">Reference</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/20/UITableViewController/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -331,6 +458,132 @@
 <li>Use custom cell in tableview controller<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) <span class="keyword">as</span>! checkListCollectionViewCell</div></pre></td></tr></table></figure></li>
 <li>Delete row from tableview controller. Update UIView in other queue. Update tableview by use tableview.deleteRowAtIndexpath<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">  <span class="class"><span class="keyword">extension</span> <span class="title">savedSongViewController</span>:<span class="title">UITableViewDelegate</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(savedSongTable: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(savedSongTable: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)</span></span> &#123;</div><div class="line">        <span class="keyword">if</span> editingStyle == .<span class="type">Delete</span> &#123;</div><div class="line">            <span class="keyword">self</span>.allSavedSongs.removeAtIndex(indexPath.row)</div><div class="line">            <span class="keyword">self</span>.savedSongs?.favoriteTracks.removeAtIndex(indexPath.row)</div><div class="line">            <span class="keyword">self</span>.savedSongs?.saveAllSongs()</div><div class="line">            <span class="keyword">var</span> selectIndex = [<span class="type">NSIndexPath</span>]()</div><div class="line">            selectIndex.append(indexPath)</div><div class="line">            savedSongTable.deleteRowsAtIndexPaths(selectIndex, withRowAnimation: <span class="type">UITableViewRowAnimation</span>.<span class="type">Fade</span>)</div><div class="line">            dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                <span class="keyword">self</span>.savedSongTable?.reloadData()</div><div class="line">            &#125;)            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
 <li>Detect button/image was tapped in a cell (use protocol)<br><a href="http://candycode.io/how-to-properly-do-buttons-in-table-view-cells/" target="_blank" rel="external">Link</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/iOS CallKitManager Usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiang Nan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JIANG NAN BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/19/iOS CallKitManager Usage/" itemprop="url">
+                  iOS CallKitManger Usage in Swift
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-19T00:00:00+08:00">
+                2017-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="How-to-use-CallKitManager-with-Swift-Language"><a href="#How-to-use-CallKitManager-with-Swift-Language" class="headerlink" title="How to use CallKitManager with Swift Language"></a>How to use CallKitManager with Swift Language</h1><p>Swift version: 3.0<br>Xcode version: 8.3</p>
+<ol>
+<li><strong>Add below line in the head</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> CallKit</div><div class="line"><span class="keyword">let</span> extensionIdentifier:<span class="type">String</span> = <span class="string">"Your extension identifier"</span></div></pre></td></tr></table></figure></li>
+<li><strong>To check the enable status of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkEnableStatus</span><span class="params">()</span></span> &#123;</div><div class="line">      <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">      globalQueue.async &#123;</div><div class="line">          <span class="keyword">self</span>.callmanager.getEnabledStatusForExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(enablestatus: <span class="type">CXCallDirectoryManager</span>.<span class="type">EnabledStatus</span>, error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">              <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                  <span class="keyword">switch</span> enablestatus &#123;</div><div class="line">                  <span class="keyword">case</span> .disabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  <span class="keyword">case</span> .enabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">true</span></div><div class="line">                  <span class="keyword">case</span> .unknown:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  &#125;</div><div class="line">                  <span class="keyword">self</span>.delegate?.didUpdateEnableStatus(status: <span class="keyword">self</span>.enableStatus)</div><div class="line">              &#125;</div><div class="line">          &#125;)</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></li>
+<li><strong>To reload phone data of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reloadData</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">        globalQueue.async &#123;</div><div class="line">            <span class="keyword">self</span>.callmanager.reloadExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">                <span class="keyword">var</span> status:<span class="type">Bool</span> = <span class="literal">false</span></div><div class="line">                <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                    status = <span class="literal">true</span></div><div class="line">                    <span class="built_in">print</span> (<span class="string">"load phone number data successful."</span>)</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="built_in">print</span> (<span class="string">"error when reload phone data."</span>)</div><div class="line"><span class="comment">//                    print (error?.localizedDescription)</span></div><div class="line">                &#125;</div><div class="line">                <span class="keyword">self</span>.delegate?.didReloadPhoneData(status: status)</div><div class="line">            &#125;)</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
 </ol>
 
           
@@ -525,132 +778,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/iOS CallKitManager Usage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiang Nan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JIANG NAN BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/19/iOS CallKitManager Usage/" itemprop="url">
-                  iOS CallKitManger Usage in Swift
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-19T00:00:00+08:00">
-                2017-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="How-to-use-CallKitManager-with-Swift-Language"><a href="#How-to-use-CallKitManager-with-Swift-Language" class="headerlink" title="How to use CallKitManager with Swift Language"></a>How to use CallKitManager with Swift Language</h1><p>Swift version: 3.0<br>Xcode version: 8.3</p>
-<ol>
-<li><strong>Add below line in the head</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> CallKit</div><div class="line"><span class="keyword">let</span> extensionIdentifier:<span class="type">String</span> = <span class="string">"Your extension identifier"</span></div></pre></td></tr></table></figure></li>
-<li><strong>To check the enable status of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkEnableStatus</span><span class="params">()</span></span> &#123;</div><div class="line">      <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">      globalQueue.async &#123;</div><div class="line">          <span class="keyword">self</span>.callmanager.getEnabledStatusForExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(enablestatus: <span class="type">CXCallDirectoryManager</span>.<span class="type">EnabledStatus</span>, error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">              <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                  <span class="keyword">switch</span> enablestatus &#123;</div><div class="line">                  <span class="keyword">case</span> .disabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  <span class="keyword">case</span> .enabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">true</span></div><div class="line">                  <span class="keyword">case</span> .unknown:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  &#125;</div><div class="line">                  <span class="keyword">self</span>.delegate?.didUpdateEnableStatus(status: <span class="keyword">self</span>.enableStatus)</div><div class="line">              &#125;</div><div class="line">          &#125;)</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></li>
-<li><strong>To reload phone data of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reloadData</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">        globalQueue.async &#123;</div><div class="line">            <span class="keyword">self</span>.callmanager.reloadExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">                <span class="keyword">var</span> status:<span class="type">Bool</span> = <span class="literal">false</span></div><div class="line">                <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                    status = <span class="literal">true</span></div><div class="line">                    <span class="built_in">print</span> (<span class="string">"load phone number data successful."</span>)</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="built_in">print</span> (<span class="string">"error when reload phone data."</span>)</div><div class="line"><span class="comment">//                    print (error?.localizedDescription)</span></div><div class="line">                &#125;</div><div class="line">                <span class="keyword">self</span>.delegate?.didReloadPhoneData(status: status)</div><div class="line">            &#125;)</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -696,7 +823,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -709,7 +836,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>

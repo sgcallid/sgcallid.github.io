@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS," />
+  <meta name="keywords" content="Hexo," />
 
 
 
@@ -87,22 +87,34 @@
 
 
 
-<meta name="description" content="Summary of UITableViewControllerThe summary of UITableViewController in Swift.Swift version: 3.0Xcode version: 8.2.1
+<meta name="description" content="Hexo command listHexo Command List 
 
-Select cell and send data to next viewcontroller12345let vc = self.storyboard?.ins">
+Test blog locally1$hexo s
+Publish blog1$hexo clean &amp;amp;&amp;amp; hexo g &amp;amp;&amp;amp; hexo d
+
+
+Reference">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Summary of UITableViewController">
-<meta property="og:url" content="http://yoursite.com/2017/03/20/UITableViewController/index.html">
+<meta property="og:title" content="Hexo Command list">
+<meta property="og:url" content="http://yoursite.com/2017/03/30/Hexo command/index.html">
 <meta property="og:site_name" content="JIANG NAN BLOG">
-<meta property="og:description" content="Summary of UITableViewControllerThe summary of UITableViewController in Swift.Swift version: 3.0Xcode version: 8.2.1
+<meta property="og:description" content="Hexo command listHexo Command List 
 
-Select cell and send data to next viewcontroller12345let vc = self.storyboard?.ins">
-<meta property="og:updated_time" content="2017-03-19T14:22:42.000Z">
+Test blog locally1$hexo s
+Publish blog1$hexo clean &amp;amp;&amp;amp; hexo g &amp;amp;&amp;amp; hexo d
+
+
+Reference">
+<meta property="og:updated_time" content="2017-03-30T14:08:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Summary of UITableViewController">
-<meta name="twitter:description" content="Summary of UITableViewControllerThe summary of UITableViewController in Swift.Swift version: 3.0Xcode version: 8.2.1
+<meta name="twitter:title" content="Hexo Command list">
+<meta name="twitter:description" content="Hexo command listHexo Command List 
 
-Select cell and send data to next viewcontroller12345let vc = self.storyboard?.ins">
+Test blog locally1$hexo s
+Publish blog1$hexo clean &amp;amp;&amp;amp; hexo g &amp;amp;&amp;amp; hexo d
+
+
+Reference">
 
 
 
@@ -130,13 +142,13 @@ Select cell and send data to next viewcontroller12345let vc = self.storyboard?.i
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/20/UITableViewController/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/30/Hexo command/"/>
 
 
 
 
 
-  <title> Summary of UITableViewController | JIANG NAN BLOG </title>
+  <title> Hexo Command list | JIANG NAN BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -255,7 +267,7 @@ Select cell and send data to next viewcontroller12345let vc = self.storyboard?.i
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/20/UITableViewController/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/30/Hexo command/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiang Nan">
@@ -276,7 +288,7 @@ Select cell and send data to next viewcontroller12345let vc = self.storyboard?.i
             
             
               
-                Summary of UITableViewController
+                Hexo Command list
               
             
           </h1>
@@ -291,8 +303,8 @@ Select cell and send data to next viewcontroller12345let vc = self.storyboard?.i
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T00:00:00+08:00">
-                2017-03-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-30T00:00:00+08:00">
+                2017-03-30
               </time>
             
 
@@ -327,14 +339,13 @@ Select cell and send data to next viewcontroller12345let vc = self.storyboard?.i
       
 
       
-        <h1 id="Summary-of-UITableViewController"><a href="#Summary-of-UITableViewController" class="headerlink" title="Summary of UITableViewController"></a>Summary of UITableViewController</h1><p>The summary of UITableViewController in Swift.<br>Swift version: 3.0<br>Xcode version: 8.2.1</p>
+        <h1 id="Hexo-command-list"><a href="#Hexo-command-list" class="headerlink" title="Hexo command list"></a>Hexo command list</h1><p>Hexo Command List </p>
 <ol>
-<li>Select cell and send data to next viewcontroller<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> vc = <span class="keyword">self</span>.storyboard?.instantiateViewControllerWithIdentifier(<span class="string">"studentDetailViewController"</span>) <span class="keyword">as</span>? studentDetailViewController</div><div class="line">vc?.newStudent = <span class="literal">false</span></div><div class="line">vc?.currentStudent = <span class="type">DataManager</span>.copyStudent(<span class="type">Students</span>[indexPath.row])</div><div class="line"><span class="keyword">self</span>.navigationController?.pushViewController(vc!, animated: <span class="literal">true</span>)  </div><div class="line">  </div></pre></td></tr></table></figure></li>
-<li>Select cell and prepare to segue<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> vc = <span class="keyword">self</span>.storyboard?.instantiateViewControllerWithIdentifier(<span class="string">"studentDetailViewController"</span>) <span class="keyword">as</span>? studentDetailViewController</div><div class="line">vc?.newStudent = <span class="literal">false</span></div><div class="line">vc?.currentStudent = student.copyStudent(<span class="type">Students</span>[indexPath.row])</div><div class="line"><span class="keyword">self</span>.navigationController?.pushViewController(vc!, animated: <span class="literal">true</span>)  </div><div class="line">  </div></pre></td></tr></table></figure></li>
-<li>Use custom cell in tableview controller<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) <span class="keyword">as</span>! checkListCollectionViewCell</div></pre></td></tr></table></figure></li>
-<li>Delete row from tableview controller. Update UIView in other queue. Update tableview by use tableview.deleteRowAtIndexpath<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">  <span class="class"><span class="keyword">extension</span> <span class="title">savedSongViewController</span>:<span class="title">UITableViewDelegate</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(savedSongTable: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(savedSongTable: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)</span></span> &#123;</div><div class="line">        <span class="keyword">if</span> editingStyle == .<span class="type">Delete</span> &#123;</div><div class="line">            <span class="keyword">self</span>.allSavedSongs.removeAtIndex(indexPath.row)</div><div class="line">            <span class="keyword">self</span>.savedSongs?.favoriteTracks.removeAtIndex(indexPath.row)</div><div class="line">            <span class="keyword">self</span>.savedSongs?.saveAllSongs()</div><div class="line">            <span class="keyword">var</span> selectIndex = [<span class="type">NSIndexPath</span>]()</div><div class="line">            selectIndex.append(indexPath)</div><div class="line">            savedSongTable.deleteRowsAtIndexPaths(selectIndex, withRowAnimation: <span class="type">UITableViewRowAnimation</span>.<span class="type">Fade</span>)</div><div class="line">            dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                <span class="keyword">self</span>.savedSongTable?.reloadData()</div><div class="line">            &#125;)            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
-<li>Detect button/image was tapped in a cell (use protocol)<br><a href="http://candycode.io/how-to-properly-do-buttons-in-table-view-cells/" target="_blank" rel="external">Link</a></li>
+<li>Test blog locally<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"><span class="meta-keyword">$hexo</span> s</span></div></pre></td></tr></table></figure></li>
+<li>Publish blog<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"><span class="meta-keyword">$hexo</span> clean &amp;&amp; hexo g &amp;&amp; hexo d</span></div></pre></td></tr></table></figure>
+</li>
 </ol>
+<p><a href="http://www.jianshu.com/p/4eaddcbe4d12" target="_blank" rel="external">Reference</a></p>
 
       
     </div>
@@ -364,7 +375,7 @@ Select cell and send data to next viewcontroller12345let vc = self.storyboard?.i
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag"># iOS</a>
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
           
         </div>
       
@@ -377,8 +388,8 @@ Select cell and send data to next viewcontroller12345let vc = self.storyboard?.i
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/19/iOS CallKitManager Usage/" rel="next" title="iOS CallKitManger Usage in Swift">
-                <i class="fa fa-chevron-left"></i> iOS CallKitManger Usage in Swift
+              <a href="/2017/03/20/UITableViewController/" rel="next" title="Summary of UITableViewController">
+                <i class="fa fa-chevron-left"></i> Summary of UITableViewController
               </a>
             
           </div>
@@ -386,10 +397,6 @@ Select cell and send data to next viewcontroller12345let vc = self.storyboard?.i
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/30/Hexo command/" rel="prev" title="Hexo Command list">
-                Hexo Command list <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -509,7 +516,7 @@ Select cell and send data to next viewcontroller12345let vc = self.storyboard?.i
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary-of-UITableViewController"><span class="nav-number">1.</span> <span class="nav-text">Summary of UITableViewController</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-command-list"><span class="nav-number">1.</span> <span class="nav-text">Hexo command list</span></a></li></ol></div>
             
 
           </div>
