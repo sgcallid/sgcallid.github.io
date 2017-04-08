@@ -87,25 +87,22 @@
 
 
 
-<meta name="description" content="How to use CallKitManager with Swift LanguageSwift version: 3.0Xcode version: 8.3
+<meta name="description" content="Notes on CloudkitSwift version: 3.0Xcode version: 8.3
 
-Add below line in the head12import CallKitlet extensionIdentifier:String = &quot;Your extension identifier&quot;
-To check the e">
+To creat a record and save it 123456789101112131415161718192021222324    @IBAction func saveNote(_ sender: AnyObject) &amp;#123;    print (&quot;save note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS CallKitManger Usage in Swift">
-<meta property="og:url" content="http://yoursite.com/2017/03/19/iOS CallKitManager Usage/index.html">
+<meta property="og:title" content="iOS Cloudkit Usage in Swift">
+<meta property="og:url" content="http://yoursite.com/2017/04/08/Cloudkit Usage/index.html">
 <meta property="og:site_name" content="JIANG NAN BLOG">
-<meta property="og:description" content="How to use CallKitManager with Swift LanguageSwift version: 3.0Xcode version: 8.3
+<meta property="og:description" content="Notes on CloudkitSwift version: 3.0Xcode version: 8.3
 
-Add below line in the head12import CallKitlet extensionIdentifier:String = &quot;Your extension identifier&quot;
-To check the e">
-<meta property="og:updated_time" content="2017-03-19T08:18:14.000Z">
+To creat a record and save it 123456789101112131415161718192021222324    @IBAction func saveNote(_ sender: AnyObject) &amp;#123;    print (&quot;save note">
+<meta property="og:updated_time" content="2017-04-08T15:54:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS CallKitManger Usage in Swift">
-<meta name="twitter:description" content="How to use CallKitManager with Swift LanguageSwift version: 3.0Xcode version: 8.3
+<meta name="twitter:title" content="iOS Cloudkit Usage in Swift">
+<meta name="twitter:description" content="Notes on CloudkitSwift version: 3.0Xcode version: 8.3
 
-Add below line in the head12import CallKitlet extensionIdentifier:String = &quot;Your extension identifier&quot;
-To check the e">
+To creat a record and save it 123456789101112131415161718192021222324    @IBAction func saveNote(_ sender: AnyObject) &amp;#123;    print (&quot;save note">
 
 
 
@@ -133,13 +130,13 @@ To check the e">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/19/iOS CallKitManager Usage/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/08/Cloudkit Usage/"/>
 
 
 
 
 
-  <title> iOS CallKitManger Usage in Swift | JIANG NAN BLOG </title>
+  <title> iOS Cloudkit Usage in Swift | JIANG NAN BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -258,7 +255,7 @@ To check the e">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/iOS CallKitManager Usage/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/08/Cloudkit Usage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiang Nan">
@@ -279,7 +276,7 @@ To check the e">
             
             
               
-                iOS CallKitManger Usage in Swift
+                iOS Cloudkit Usage in Swift
               
             
           </h1>
@@ -294,8 +291,8 @@ To check the e">
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-19T00:00:00+08:00">
-                2017-03-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-08T00:00:00+08:00">
+                2017-04-08
               </time>
             
 
@@ -330,11 +327,10 @@ To check the e">
       
 
       
-        <h1 id="How-to-use-CallKitManager-with-Swift-Language"><a href="#How-to-use-CallKitManager-with-Swift-Language" class="headerlink" title="How to use CallKitManager with Swift Language"></a>How to use CallKitManager with Swift Language</h1><p>Swift version: 3.0<br>Xcode version: 8.3</p>
+        <h1 id="Notes-on-Cloudkit"><a href="#Notes-on-Cloudkit" class="headerlink" title="Notes on Cloudkit"></a>Notes on Cloudkit</h1><p>Swift version: 3.0<br>Xcode version: 8.3</p>
 <ol>
-<li><strong>Add below line in the head</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> CallKit</div><div class="line"><span class="keyword">let</span> extensionIdentifier:<span class="type">String</span> = <span class="string">"Your extension identifier"</span></div></pre></td></tr></table></figure></li>
-<li><strong>To check the enable status of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkEnableStatus</span><span class="params">()</span></span> &#123;</div><div class="line">      <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">      globalQueue.async &#123;</div><div class="line">          <span class="keyword">self</span>.callmanager.getEnabledStatusForExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(enablestatus: <span class="type">CXCallDirectoryManager</span>.<span class="type">EnabledStatus</span>, error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">              <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                  <span class="keyword">switch</span> enablestatus &#123;</div><div class="line">                  <span class="keyword">case</span> .disabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  <span class="keyword">case</span> .enabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">true</span></div><div class="line">                  <span class="keyword">case</span> .unknown:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  &#125;</div><div class="line">                  <span class="keyword">self</span>.delegate?.didUpdateEnableStatus(status: <span class="keyword">self</span>.enableStatus)</div><div class="line">              &#125;</div><div class="line">          &#125;)</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></li>
-<li><strong>To reload phone data of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reloadData</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">        globalQueue.async &#123;</div><div class="line">            <span class="keyword">self</span>.callmanager.reloadExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">                <span class="keyword">var</span> status:<span class="type">Bool</span> = <span class="literal">false</span></div><div class="line">                <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                    status = <span class="literal">true</span></div><div class="line">                    <span class="built_in">print</span> (<span class="string">"load phone number data successful."</span>)</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="built_in">print</span> (<span class="string">"error when reload phone data."</span>)</div><div class="line"><span class="comment">//                    print (error?.localizedDescription)</span></div><div class="line">                &#125;</div><div class="line">                <span class="keyword">self</span>.delegate?.didReloadPhoneData(status: status)</div><div class="line">            &#125;)</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
+<li><strong>To creat a record and save it</strong> <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">saveNote</span><span class="params">(<span class="number">_</span> sender: AnyObject)</span></span> &#123;</div><div class="line">    <span class="built_in">print</span> (<span class="string">"save note to cloud."</span>)</div><div class="line">    <span class="keyword">var</span> noteRecord: <span class="type">CKRecord</span>!</div><div class="line">    </div><div class="line">    noteRecord = <span class="type">CKRecord</span>(recordType: <span class="string">"Note"</span>)</div><div class="line">    noteRecord.setObject(noteTitle.text <span class="keyword">as</span>! <span class="type">CKRecordValue</span>, forKey: <span class="string">"noteTitle"</span>)</div><div class="line">    noteRecord.setObject(notetext.text <span class="keyword">as</span>! <span class="type">CKRecordValue</span>, forKey: <span class="string">"noteText"</span>)</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> url = imageURL &#123;</div><div class="line">        <span class="keyword">let</span> imageAsset = <span class="type">CKAsset</span>(fileURL: url)</div><div class="line">        noteRecord.setObject(imageAsset, forKey: <span class="string">"noteImage"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> container = <span class="type">CKContainer</span>.<span class="keyword">default</span>()</div><div class="line">    <span class="keyword">let</span> publicdatabase = container.publicCloudDatabase</div><div class="line">    </div><div class="line">    publicdatabase.save(noteRecord) &#123; (record, error) <span class="keyword">in</span></div><div class="line">        <span class="keyword">if</span> error != <span class="literal">nil</span> &#123;</div><div class="line">            <span class="built_in">print</span> (error)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">print</span> (<span class="string">"save successful."</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li><strong>Save image to local file</strong> <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">saveImageLocally</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> imageData: <span class="type">Data</span> = <span class="type">UIImageJPEGRepresentation</span>(noteImage.image!, <span class="number">0.8</span>)!</div><div class="line">    <span class="keyword">let</span> imageDirectoryPath = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.documentDirectory, .userDomainMask, <span class="literal">true</span>)[<span class="number">0</span>] <span class="keyword">as</span> <span class="type">NSString</span></div><div class="line">    <span class="keyword">let</span> imagename = <span class="string">"temp_image.jpg"</span></div><div class="line">    <span class="keyword">let</span> path = imageDirectoryPath.appendingPathComponent(imagename)</div><div class="line">    imageURL = <span class="type">URL</span>(fileURLWithPath: path)</div><div class="line">    <span class="keyword">try</span>? imageData.write(to: imageURL, options: [.atomic])</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -378,8 +374,8 @@ To check the e">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/19/Swift summary/" rel="next" title="Summary of Swift">
-                <i class="fa fa-chevron-left"></i> Summary of Swift
+              <a href="/2017/03/30/Hexo command/" rel="next" title="Hexo Command list">
+                <i class="fa fa-chevron-left"></i> Hexo Command list
               </a>
             
           </div>
@@ -387,10 +383,6 @@ To check the e">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/20/UITableViewController/" rel="prev" title="Summary of UITableViewController">
-                Summary of UITableViewController <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -510,7 +502,7 @@ To check the e">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-use-CallKitManager-with-Swift-Language"><span class="nav-number">1.</span> <span class="nav-text">How to use CallKitManager with Swift Language</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-on-Cloudkit"><span class="nav-number">1.</span> <span class="nav-text">Notes on Cloudkit</span></a></li></ol></div>
             
 
           </div>
