@@ -89,20 +89,23 @@
 
 <meta name="description" content="All about convert (date, string, data)The summary of convert in Swift.Swift version: 3.0Xcode version: 8.2.1
 
-Convert Date to String12345var msg = &quot;&quot;let dateformatter = DateFormatter()dateformatter.da">
+Convert Date to String
+12345var msg = &quot;&quot;let dateformatter = DateFormatter()dateformatter.d">
 <meta property="og:type" content="article">
 <meta property="og:title" content="All about convert">
 <meta property="og:url" content="http://yoursite.com/2017/04/30/Convert/index.html">
 <meta property="og:site_name" content="JIANG NAN BLOG">
 <meta property="og:description" content="All about convert (date, string, data)The summary of convert in Swift.Swift version: 3.0Xcode version: 8.2.1
 
-Convert Date to String12345var msg = &quot;&quot;let dateformatter = DateFormatter()dateformatter.da">
-<meta property="og:updated_time" content="2017-04-30T15:16:42.000Z">
+Convert Date to String
+12345var msg = &quot;&quot;let dateformatter = DateFormatter()dateformatter.d">
+<meta property="og:updated_time" content="2017-05-13T01:07:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="All about convert">
 <meta name="twitter:description" content="All about convert (date, string, data)The summary of convert in Swift.Swift version: 3.0Xcode version: 8.2.1
 
-Convert Date to String12345var msg = &quot;&quot;let dateformatter = DateFormatter()dateformatter.da">
+Convert Date to String
+12345var msg = &quot;&quot;let dateformatter = DateFormatter()dateformatter.d">
 
 
 
@@ -329,7 +332,11 @@ Convert Date to String12345var msg = &quot;&quot;let dateformatter = DateFormatt
       
         <h1 id="All-about-convert-date-string-data"><a href="#All-about-convert-date-string-data" class="headerlink" title="All about convert (date, string, data)"></a>All about convert (date, string, data)</h1><p>The summary of convert in Swift.<br>Swift version: 3.0<br>Xcode version: 8.2.1</p>
 <ol>
-<li>Convert Date to String<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> msg = <span class="string">""</span></div><div class="line"><span class="keyword">let</span> dateformatter = <span class="type">DateFormatter</span>()</div><div class="line">dateformatter.dateFormat = <span class="string">"HH:mm:ss"</span></div><div class="line">msg = msg + dateformatter.string(from: timestamp) </div><div class="line">  </div></pre></td></tr></table></figure>
+<li><p>Convert Date to String</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> msg = <span class="string">""</span></div><div class="line"><span class="keyword">let</span> dateformatter = <span class="type">DateFormatter</span>()</div><div class="line">dateformatter.dateFormat = <span class="string">"HH:mm:ss"</span></div><div class="line">msg = msg + dateformatter.string(from: timestamp) </div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+<li><p>Convert time difference to String</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ct = <span class="type">Date</span>()</div><div class="line"><span class="keyword">var</span> ts = <span class="string">""</span></div><div class="line"><span class="keyword">var</span> ms = <span class="string">""</span></div><div class="line"><span class="keyword">var</span> ss = <span class="string">""</span></div><div class="line"><span class="keyword">if</span> a.alarmStatus &#123;</div><div class="line">    <span class="keyword">let</span> components = <span class="type">Calendar</span>.current.dateComponents([.minute, .second], from: a.alarmtimestamp, to: ct)</div><div class="line">    ms = <span class="string">"<span class="subst">\(components.minute ?? <span class="number">0</span>)</span>:"</span></div><div class="line">    ss = <span class="string">"<span class="subst">\(components.second ?? <span class="number">0</span>)</span>"</span></div><div class="line">    ts = ms + ss</div><div class="line">&#125;</div><div class="line">cell.bedLabel.text = ts</div><div class="line">  </div></pre></td></tr></table></figure>
 </li>
 </ol>
 
