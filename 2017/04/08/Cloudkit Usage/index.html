@@ -89,20 +89,23 @@
 
 <meta name="description" content="Notes on CloudkitSwift version: 3.0Xcode version: 8.3
 
-To creat a record and save it 123456789101112131415161718192021222324    @IBAction func saveNote(_ sender: AnyObject) &amp;#123;    print (&quot;save note">
+To query a record by distance
+123456789101112131415161718let distance = 1000.0let locationPredicate = NSPredicate(format: &quot;distanceToLocation:fro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS Cloudkit Usage in Swift">
 <meta property="og:url" content="http://yoursite.com/2017/04/08/Cloudkit Usage/index.html">
 <meta property="og:site_name" content="JIANG NAN BLOG">
 <meta property="og:description" content="Notes on CloudkitSwift version: 3.0Xcode version: 8.3
 
-To creat a record and save it 123456789101112131415161718192021222324    @IBAction func saveNote(_ sender: AnyObject) &amp;#123;    print (&quot;save note">
-<meta property="og:updated_time" content="2017-04-08T15:54:06.000Z">
+To query a record by distance
+123456789101112131415161718let distance = 1000.0let locationPredicate = NSPredicate(format: &quot;distanceToLocation:fro">
+<meta property="og:updated_time" content="2017-06-23T13:33:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS Cloudkit Usage in Swift">
 <meta name="twitter:description" content="Notes on CloudkitSwift version: 3.0Xcode version: 8.3
 
-To creat a record and save it 123456789101112131415161718192021222324    @IBAction func saveNote(_ sender: AnyObject) &amp;#123;    print (&quot;save note">
+To query a record by distance
+123456789101112131415161718let distance = 1000.0let locationPredicate = NSPredicate(format: &quot;distanceToLocation:fro">
 
 
 
@@ -329,8 +332,12 @@ To creat a record and save it 123456789101112131415161718192021222324    @IBActi
       
         <h1 id="Notes-on-Cloudkit"><a href="#Notes-on-Cloudkit" class="headerlink" title="Notes on Cloudkit"></a>Notes on Cloudkit</h1><p>Swift version: 3.0<br>Xcode version: 8.3</p>
 <ol>
-<li><strong>To creat a record and save it</strong> <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">saveNote</span><span class="params">(<span class="number">_</span> sender: AnyObject)</span></span> &#123;</div><div class="line">    <span class="built_in">print</span> (<span class="string">"save note to cloud."</span>)</div><div class="line">    <span class="keyword">var</span> noteRecord: <span class="type">CKRecord</span>!</div><div class="line">    </div><div class="line">    noteRecord = <span class="type">CKRecord</span>(recordType: <span class="string">"Note"</span>)</div><div class="line">    noteRecord.setObject(noteTitle.text <span class="keyword">as</span>! <span class="type">CKRecordValue</span>, forKey: <span class="string">"noteTitle"</span>)</div><div class="line">    noteRecord.setObject(notetext.text <span class="keyword">as</span>! <span class="type">CKRecordValue</span>, forKey: <span class="string">"noteText"</span>)</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> url = imageURL &#123;</div><div class="line">        <span class="keyword">let</span> imageAsset = <span class="type">CKAsset</span>(fileURL: url)</div><div class="line">        noteRecord.setObject(imageAsset, forKey: <span class="string">"noteImage"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> container = <span class="type">CKContainer</span>.<span class="keyword">default</span>()</div><div class="line">    <span class="keyword">let</span> publicdatabase = container.publicCloudDatabase</div><div class="line">    </div><div class="line">    publicdatabase.save(noteRecord) &#123; (record, error) <span class="keyword">in</span></div><div class="line">        <span class="keyword">if</span> error != <span class="literal">nil</span> &#123;</div><div class="line">            <span class="built_in">print</span> (error)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">print</span> (<span class="string">"save successful."</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
-<li><strong>Save image to local file</strong> <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">saveImageLocally</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> imageData: <span class="type">Data</span> = <span class="type">UIImageJPEGRepresentation</span>(noteImage.image!, <span class="number">0.8</span>)!</div><div class="line">    <span class="keyword">let</span> imageDirectoryPath = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.documentDirectory, .userDomainMask, <span class="literal">true</span>)[<span class="number">0</span>] <span class="keyword">as</span> <span class="type">NSString</span></div><div class="line">    <span class="keyword">let</span> imagename = <span class="string">"temp_image.jpg"</span></div><div class="line">    <span class="keyword">let</span> path = imageDirectoryPath.appendingPathComponent(imagename)</div><div class="line">    imageURL = <span class="type">URL</span>(fileURLWithPath: path)</div><div class="line">    <span class="keyword">try</span>? imageData.write(to: imageURL, options: [.atomic])</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li><p><strong>To query a record by distance</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="built_in">distance</span> = <span class="number">1000.0</span></div><div class="line"><span class="keyword">let</span> locationPredicate = <span class="type">NSPredicate</span>(format: <span class="string">"distanceToLocation:fromLocation:(%K, %@) &lt; %f"</span>, <span class="string">"location"</span>, currentlocation, <span class="built_in">distance</span>)</div><div class="line"><span class="keyword">let</span> query = <span class="type">CKQuery</span>(recordType: <span class="string">"trolley"</span>, predicate: locationPredicate)</div><div class="line">publicdatabase.perform(query, inZoneWith: <span class="literal">nil</span>) &#123; (results, error) <span class="keyword">in</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> error = error&#123;</div><div class="line">        <span class="built_in">print</span> (error)</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">print</span> (<span class="string">"find <span class="subst">\(results?.<span class="built_in">count</span>)</span> trolleys"</span>)</div><div class="line">    <span class="keyword">var</span> addresses:[<span class="type">String</span>] = []</div><div class="line">    results?.forEach(&#123; (arecord:<span class="type">CKRecord</span>) <span class="keyword">in</span></div><div class="line">        addresses.append((arecord.value(forKey: <span class="string">"address"</span>) <span class="keyword">as</span>! <span class="type">String</span>))</div><div class="line">        <span class="built_in">print</span> (arecord.value(forKey: <span class="string">"address"</span>))</div><div class="line">    &#125;)</div><div class="line">    <span class="type">DispatchQueue</span>.main.async &#123;</div><div class="line">        <span class="keyword">self</span>.delegate.didQueryComplete(address: addresses)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Save image to local file</strong></p>
+ <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">saveImageLocally</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> imageData: <span class="type">Data</span> = <span class="type">UIImageJPEGRepresentation</span>(noteImage.image!, <span class="number">0.8</span>)!</div><div class="line">    <span class="keyword">let</span> imageDirectoryPath = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.documentDirectory, .userDomainMask, <span class="literal">true</span>)[<span class="number">0</span>] <span class="keyword">as</span> <span class="type">NSString</span></div><div class="line">    <span class="keyword">let</span> imagename = <span class="string">"temp_image.jpg"</span></div><div class="line">    <span class="keyword">let</span> path = imageDirectoryPath.appendingPathComponent(imagename)</div><div class="line">    imageURL = <span class="type">URL</span>(fileURLWithPath: path)</div><div class="line">    <span class="keyword">try</span>? imageData.write(to: imageURL, options: [.atomic])</div><div class="line">&#125;</div><div class="line">    </div></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
@@ -458,7 +465,7 @@ To creat a record and save it 123456789101112131415161718192021222324    @IBActi
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -471,7 +478,7 @@ To creat a record and save it 123456789101112131415161718192021222324    @IBActi
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
