@@ -101,7 +101,7 @@ Array remove item: Remove item from Ar">
 UISwitch: UISwitch usage
 Animation: Animation usage
 Array remove item: Remove item from Ar">
-<meta property="og:updated_time" content="2017-06-26T13:42:28.000Z">
+<meta property="og:updated_time" content="2017-07-14T14:16:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary of Swift 2">
 <meta name="twitter:description" content="Summary of Swift developmentThe summary of Swift development. (Part 2)Swift version: 3.0Xcode version: 8.2.1
@@ -343,6 +343,8 @@ Array remove item: Remove item from Ar">
 <li><a href="#Motiondetect">Motiondetect</a>: How to detect motion in viewcontroller</li>
 <li><a href="#Playsound">Playsound</a>: Play system sound</li>
 <li><a href="#gradientcolor">Add gradient color</a>: Add gradient color to view controller</li>
+<li><a href="#userdefault">User default</a>: Read/Write userdefault settings</li>
+<li><a href="#system notification">System notification</a>: How to oberserve system notification</li>
 </ol>
 <ol>
 <li><p><a name="UISwitch"></a> <strong>UISwitch usage</strong></p>
@@ -389,9 +391,18 @@ Array remove item: Remove item from Ar">
 </li>
 <li><p><a name="gradientcolor"></a> <strong> Gradient color to view controller</strong></p>
 <ul>
-<li>Add gradient color to background<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> gradient = <span class="type">CAGradientLayer</span>()</div><div class="line">gradient.frame = <span class="keyword">self</span>.view.bounds</div><div class="line">gradient.colors = [<span class="type">UIColor</span>.blue.cgColor, <span class="type">UIColor</span>.green.cgColor]</div><div class="line"><span class="keyword">self</span>.view.layer.insertSublayer(gradient, at: <span class="number">0</span>)</div><div class="line">    </div></pre></td></tr></table></figure></li>
+<li>Add gradient color to background<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> gradient = <span class="type">CAGradientLayer</span>()</div><div class="line">gradient.frame = <span class="keyword">self</span>.view.bounds</div><div class="line">gradient.colors = [<span class="type">UIColor</span>.blue.cgColor, <span class="type">UIColor</span>.green.cgColor]</div><div class="line"><span class="keyword">self</span>.view.layer.insertSublayer(gradient, at: <span class="number">0</span>)</div><div class="line">    </div></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
+<li><p><a name="userdefault"></a> <strong> Read and write user default setting</strong></p>
+<ul>
+<li>Read and write user default<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> defaults = <span class="type">UserDefaults</span>.standard</div><div class="line">defaults.<span class="keyword">set</span>(owner, forKey: <span class="type">RecordField</span>.owner.rawValue)</div><div class="line"></div><div class="line"><span class="keyword">let</span> defaults = <span class="type">UserDefaults</span>.standard</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> o = defaults.string(forKey: <span class="type">RecordField</span>.owner.rawValue) &#123;</div><div class="line">    <span class="built_in">print</span> (o)</div><div class="line">&#125;</div><div class="line">    </div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="system notification"></a> <strong> How to add obersver for system notification </strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, selector: #selector(<span class="type">ViewController</span>.didBecomeActiveNotificaitonReceived), name: <span class="type">NSNotification</span>.<span class="type">Name</span>(rawValue: <span class="string">"UIApplicationDidBecomeActiveNotification"</span>), object: <span class="literal">nil</span>)</div><div class="line"></div><div class="line"><span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.removeObserver(<span class="keyword">self</span>, name: <span class="type">NSNotification</span>.<span class="type">Name</span>(rawValue: <span class="string">"UIApplicationDidBecomeActiveNotification"</span>), object: <span class="literal">nil</span>)</div><div class="line">&#125;</div><div class="line">    </div></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -519,7 +530,7 @@ Array remove item: Remove item from Ar">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

@@ -87,25 +87,22 @@
 
 
 
-<meta name="description" content="How to use CallKitManager with Swift LanguageSwift version: 3.0Xcode version: 8.3
+<meta name="description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1
 
-Add below line in the head12import CallKitlet extensionIdentifier:String = &quot;Your extension identifier&quot;
-To check the e">
+To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS CallKitManger Usage in Swift">
-<meta property="og:url" content="http://yoursite.com/2017/03/19/iOS CallKitManager Usage/index.html">
+<meta property="og:title" content="Summary of collections">
+<meta property="og:url" content="http://yoursite.com/2017/06/28/Collections/index.html">
 <meta property="og:site_name" content="JIANG NAN BLOG">
-<meta property="og:description" content="How to use CallKitManager with Swift LanguageSwift version: 3.0Xcode version: 8.3
+<meta property="og:description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1
 
-Add below line in the head12import CallKitlet extensionIdentifier:String = &quot;Your extension identifier&quot;
-To check the e">
-<meta property="og:updated_time" content="2017-03-19T08:18:14.000Z">
+To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
+<meta property="og:updated_time" content="2017-06-28T21:38:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS CallKitManger Usage in Swift">
-<meta name="twitter:description" content="How to use CallKitManager with Swift LanguageSwift version: 3.0Xcode version: 8.3
+<meta name="twitter:title" content="Summary of collections">
+<meta name="twitter:description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1
 
-Add below line in the head12import CallKitlet extensionIdentifier:String = &quot;Your extension identifier&quot;
-To check the e">
+To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
 
 
 
@@ -133,13 +130,13 @@ To check the e">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/19/iOS CallKitManager Usage/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/28/Collections/"/>
 
 
 
 
 
-  <title> iOS CallKitManger Usage in Swift | JIANG NAN BLOG </title>
+  <title> Summary of collections | JIANG NAN BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -258,7 +255,7 @@ To check the e">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/iOS CallKitManager Usage/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/Collections/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiang Nan">
@@ -279,7 +276,7 @@ To check the e">
             
             
               
-                iOS CallKitManger Usage in Swift
+                Summary of collections
               
             
           </h1>
@@ -294,8 +291,8 @@ To check the e">
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-19T00:00:00+08:00">
-                2017-03-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-28T00:00:00+08:00">
+                2017-06-28
               </time>
             
 
@@ -330,11 +327,22 @@ To check the e">
       
 
       
-        <h1 id="How-to-use-CallKitManager-with-Swift-Language"><a href="#How-to-use-CallKitManager-with-Swift-Language" class="headerlink" title="How to use CallKitManager with Swift Language"></a>How to use CallKitManager with Swift Language</h1><p>Swift version: 3.0<br>Xcode version: 8.3</p>
+        <h1 id="Summary-of-collections"><a href="#Summary-of-collections" class="headerlink" title="Summary of collections"></a>Summary of collections</h1><p>The summary of collections.<br>Swift version: 3.0<br>Xcode version: 8.2.1</p>
 <ol>
-<li><strong>Add below line in the head</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> CallKit</div><div class="line"><span class="keyword">let</span> extensionIdentifier:<span class="type">String</span> = <span class="string">"Your extension identifier"</span></div></pre></td></tr></table></figure></li>
-<li><strong>To check the enable status of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkEnableStatus</span><span class="params">()</span></span> &#123;</div><div class="line">      <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">      globalQueue.async &#123;</div><div class="line">          <span class="keyword">self</span>.callmanager.getEnabledStatusForExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(enablestatus: <span class="type">CXCallDirectoryManager</span>.<span class="type">EnabledStatus</span>, error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">              <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                  <span class="keyword">switch</span> enablestatus &#123;</div><div class="line">                  <span class="keyword">case</span> .disabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  <span class="keyword">case</span> .enabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">true</span></div><div class="line">                  <span class="keyword">case</span> .unknown:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  &#125;</div><div class="line">                  <span class="keyword">self</span>.delegate?.didUpdateEnableStatus(status: <span class="keyword">self</span>.enableStatus)</div><div class="line">              &#125;</div><div class="line">          &#125;)</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></li>
-<li><strong>To reload phone data of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reloadData</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">        globalQueue.async &#123;</div><div class="line">            <span class="keyword">self</span>.callmanager.reloadExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">                <span class="keyword">var</span> status:<span class="type">Bool</span> = <span class="literal">false</span></div><div class="line">                <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                    status = <span class="literal">true</span></div><div class="line">                    <span class="built_in">print</span> (<span class="string">"load phone number data successful."</span>)</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="built_in">print</span> (<span class="string">"error when reload phone data."</span>)</div><div class="line"><span class="comment">//                    print (error?.localizedDescription)</span></div><div class="line">                &#125;</div><div class="line">                <span class="keyword">self</span>.delegate?.didReloadPhoneData(status: status)</div><div class="line">            &#125;)</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
+<li><p>To iterate an array with Struct<br>You cannot change property of struct in loop. During the loop, you are operate the copy of the struct. Old loop method should be used for it. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">0</span>..&lt;nearbyTrolleys.<span class="built_in">count</span> &#123;</div><div class="line">    nearbyTrolleys[index].<span class="built_in">distance</span> = nearbyTrolleys[index].location.<span class="built_in">distance</span>(from: currentlocation)</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+<li><p>Check item exist in array</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b:[<span class="type">String</span>] = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>]</div><div class="line">b.<span class="built_in">contains</span>(<span class="string">"a"</span>)</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+<li><p>Filter item in array</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="keyword">let</span> a3 = a.<span class="built_in">filter</span>&#123;$<span class="number">0</span> == <span class="number">2</span>&#125;</div><div class="line"><span class="built_in">print</span>(a3)</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+<li><p>Sort array</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="keyword">let</span> d = a.sorted(by: &gt;)</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+<li><p>Map </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a4 = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</div><div class="line"><span class="keyword">let</span> b4 = a4.<span class="built_in">map</span> &#123; (item:<span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> item * <span class="number">2</span></div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -378,8 +386,8 @@ To check the e">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/19/Swift summary/" rel="next" title="Summary of Swift">
-                <i class="fa fa-chevron-left"></i> Summary of Swift
+              <a href="/2017/06/08/git/" rel="next" title="Git Command list">
+                <i class="fa fa-chevron-left"></i> Git Command list
               </a>
             
           </div>
@@ -387,10 +395,6 @@ To check the e">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/20/UITableViewController/" rel="prev" title="Summary of UITableViewController">
-                Summary of UITableViewController <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -510,7 +514,7 @@ To check the e">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-use-CallKitManager-with-Swift-Language"><span class="nav-number">1.</span> <span class="nav-text">How to use CallKitManager with Swift Language</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary-of-collections"><span class="nav-number">1.</span> <span class="nav-text">Summary of collections</span></a></li></ol></div>
             
 
           </div>

@@ -247,6 +247,143 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/Collections/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiang Nan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JIANG NAN BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/28/Collections/" itemprop="url">
+                  Summary of collections
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-28T00:00:00+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Summary-of-collections"><a href="#Summary-of-collections" class="headerlink" title="Summary of collections"></a>Summary of collections</h1><p>The summary of collections.<br>Swift version: 3.0<br>Xcode version: 8.2.1</p>
+<ol>
+<li><p>To iterate an array with Struct<br>You cannot change property of struct in loop. During the loop, you are operate the copy of the struct. Old loop method should be used for it. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">0</span>..&lt;nearbyTrolleys.<span class="built_in">count</span> &#123;</div><div class="line">    nearbyTrolleys[index].<span class="built_in">distance</span> = nearbyTrolleys[index].location.<span class="built_in">distance</span>(from: currentlocation)</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+<li><p>Check item exist in array</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b:[<span class="type">String</span>] = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>]</div><div class="line">b.<span class="built_in">contains</span>(<span class="string">"a"</span>)</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+<li><p>Filter item in array</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="keyword">let</span> a3 = a.<span class="built_in">filter</span>&#123;$<span class="number">0</span> == <span class="number">2</span>&#125;</div><div class="line"><span class="built_in">print</span>(a3)</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+<li><p>Sort array</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="keyword">let</span> d = a.sorted(by: &gt;)</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+<li><p>Map </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a4 = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</div><div class="line"><span class="keyword">let</span> b4 = a4.<span class="built_in">map</span> &#123; (item:<span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> item * <span class="number">2</span></div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/08/git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -461,6 +598,8 @@
 <li><a href="#Motiondetect">Motiondetect</a>: How to detect motion in viewcontroller</li>
 <li><a href="#Playsound">Playsound</a>: Play system sound</li>
 <li><a href="#gradientcolor">Add gradient color</a>: Add gradient color to view controller</li>
+<li><a href="#userdefault">User default</a>: Read/Write userdefault settings</li>
+<li><a href="#system notification">System notification</a>: How to oberserve system notification</li>
 </ol>
 <ol>
 <li><p><a name="UISwitch"></a> <strong>UISwitch usage</strong></p>
@@ -507,9 +646,18 @@
 </li>
 <li><p><a name="gradientcolor"></a> <strong> Gradient color to view controller</strong></p>
 <ul>
-<li>Add gradient color to background<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> gradient = <span class="type">CAGradientLayer</span>()</div><div class="line">gradient.frame = <span class="keyword">self</span>.view.bounds</div><div class="line">gradient.colors = [<span class="type">UIColor</span>.blue.cgColor, <span class="type">UIColor</span>.green.cgColor]</div><div class="line"><span class="keyword">self</span>.view.layer.insertSublayer(gradient, at: <span class="number">0</span>)</div><div class="line">    </div></pre></td></tr></table></figure></li>
+<li>Add gradient color to background<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> gradient = <span class="type">CAGradientLayer</span>()</div><div class="line">gradient.frame = <span class="keyword">self</span>.view.bounds</div><div class="line">gradient.colors = [<span class="type">UIColor</span>.blue.cgColor, <span class="type">UIColor</span>.green.cgColor]</div><div class="line"><span class="keyword">self</span>.view.layer.insertSublayer(gradient, at: <span class="number">0</span>)</div><div class="line">    </div></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
+<li><p><a name="userdefault"></a> <strong> Read and write user default setting</strong></p>
+<ul>
+<li>Read and write user default<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> defaults = <span class="type">UserDefaults</span>.standard</div><div class="line">defaults.<span class="keyword">set</span>(owner, forKey: <span class="type">RecordField</span>.owner.rawValue)</div><div class="line"></div><div class="line"><span class="keyword">let</span> defaults = <span class="type">UserDefaults</span>.standard</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> o = defaults.string(forKey: <span class="type">RecordField</span>.owner.rawValue) &#123;</div><div class="line">    <span class="built_in">print</span> (o)</div><div class="line">&#125;</div><div class="line">    </div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="system notification"></a> <strong> How to add obersver for system notification </strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, selector: #selector(<span class="type">ViewController</span>.didBecomeActiveNotificaitonReceived), name: <span class="type">NSNotification</span>.<span class="type">Name</span>(rawValue: <span class="string">"UIApplicationDidBecomeActiveNotification"</span>), object: <span class="literal">nil</span>)</div><div class="line"></div><div class="line"><span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.removeObserver(<span class="keyword">self</span>, name: <span class="type">NSNotification</span>.<span class="type">Name</span>(rawValue: <span class="string">"UIApplicationDidBecomeActiveNotification"</span>), object: <span class="literal">nil</span>)</div><div class="line">&#125;</div><div class="line">    </div></pre></td></tr></table></figure></li>
 </ol>
 
           
@@ -763,7 +911,7 @@
             <h1 id="Notes-on-Cloudkit"><a href="#Notes-on-Cloudkit" class="headerlink" title="Notes on Cloudkit"></a>Notes on Cloudkit</h1><p>Swift version: 3.0<br>Xcode version: 8.3</p>
 <ol>
 <li><p><strong>To query a record by distance</strong></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="built_in">distance</span> = <span class="number">1000.0</span></div><div class="line"><span class="keyword">let</span> locationPredicate = <span class="type">NSPredicate</span>(format: <span class="string">"distanceToLocation:fromLocation:(%K, %@) &lt; %f"</span>, <span class="string">"location"</span>, currentlocation, <span class="built_in">distance</span>)</div><div class="line"><span class="keyword">let</span> query = <span class="type">CKQuery</span>(recordType: <span class="string">"trolley"</span>, predicate: locationPredicate)</div><div class="line">publicdatabase.perform(query, inZoneWith: <span class="literal">nil</span>) &#123; (results, error) <span class="keyword">in</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> error = error&#123;</div><div class="line">        <span class="built_in">print</span> (error)</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">print</span> (<span class="string">"find <span class="subst">\(results?.<span class="built_in">count</span>)</span> trolleys"</span>)</div><div class="line">    <span class="keyword">var</span> addresses:[<span class="type">String</span>] = []</div><div class="line">    results?.forEach(&#123; (arecord:<span class="type">CKRecord</span>) <span class="keyword">in</span></div><div class="line">        addresses.append((arecord.value(forKey: <span class="string">"address"</span>) <span class="keyword">as</span>! <span class="type">String</span>))</div><div class="line">        <span class="built_in">print</span> (arecord.value(forKey: <span class="string">"address"</span>))</div><div class="line">    &#125;)</div><div class="line">    <span class="type">DispatchQueue</span>.main.async &#123;</div><div class="line">        <span class="keyword">self</span>.delegate.didQueryComplete(address: addresses)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> nearbyTrolleys:[trolley]=[]</div><div class="line"><span class="keyword">let</span> <span class="built_in">distance</span> = <span class="number">3000.0</span></div><div class="line"><span class="keyword">let</span> locationPredicate = <span class="type">NSPredicate</span>(format: <span class="string">"distanceToLocation:fromLocation:(%K, %@) &lt; %f"</span>, <span class="string">"location"</span>, currentlocation, <span class="built_in">distance</span>)</div><div class="line"><span class="keyword">let</span> date = <span class="type">Date</span>(timeInterval: -<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">7</span>, since: <span class="type">Date</span>())</div><div class="line"><span class="keyword">let</span> timePredicate = <span class="type">NSPredicate</span>(format: <span class="string">"%K &gt; %@"</span>, <span class="type">RecordField</span>.creationDate.rawValue, date <span class="keyword">as</span> <span class="type">CVarArg</span>)</div><div class="line"><span class="keyword">let</span> statusPredicate = <span class="type">NSPredicate</span>(format: <span class="string">"%K = 0"</span>, <span class="type">RecordField</span>.status.rawValue)</div><div class="line"><span class="keyword">let</span> compoundPredicate = <span class="type">NSCompoundPredicate</span>(type: .and, subpredicates: [timePredicate, locationPredicate, statusPredicate])</div><div class="line"><span class="keyword">let</span> query = <span class="type">CKQuery</span>(recordType: <span class="string">"trolley"</span>, predicate: compoundPredicate)</div><div class="line"><span class="keyword">let</span> operation = <span class="type">CKQueryOperation</span>(query: query)</div><div class="line">operation.resultsLimit = <span class="number">50</span></div><div class="line">operation.desiredKeys = [<span class="type">RecordField</span>.address.rawValue, <span class="type">RecordField</span>.owner.rawValue, <span class="type">RecordField</span>.creationDate.rawValue, <span class="type">RecordField</span>.recordName.rawValue, <span class="type">RecordField</span>.location.rawValue, <span class="type">RecordField</span>.status.rawValue]</div><div class="line"></div><div class="line">operation.recordFetchedBlock = &#123;(record:<span class="type">CKRecord</span>) <span class="keyword">in</span></div><div class="line">    nearbyTrolleys.append(<span class="keyword">self</span>.recordToTrolley(arecord: record, currentlocation: currentlocation))</div><div class="line">&#125;</div><div class="line">operation.queryCompletionBlock = &#123;(<span class="number">_</span>, error) <span class="keyword">in</span></div><div class="line">    <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">        <span class="built_in">print</span> (<span class="string">"retrieve nearby trolley successful <span class="subst">\(nearbyTrolleys.<span class="built_in">count</span>)</span>."</span>)</div><div class="line">        completion(<span class="literal">true</span>, nearbyTrolleys)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">print</span> (error)</div><div class="line">        completion(<span class="literal">false</span>, nearbyTrolleys)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">publicdatabase.add(operation)</div></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Save image to local file</strong></p>
  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">saveImageLocally</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> imageData: <span class="type">Data</span> = <span class="type">UIImageJPEGRepresentation</span>(noteImage.image!, <span class="number">0.8</span>)!</div><div class="line">    <span class="keyword">let</span> imageDirectoryPath = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.documentDirectory, .userDomainMask, <span class="literal">true</span>)[<span class="number">0</span>] <span class="keyword">as</span> <span class="type">NSString</span></div><div class="line">    <span class="keyword">let</span> imagename = <span class="string">"temp_image.jpg"</span></div><div class="line">    <span class="keyword">let</span> path = imageDirectoryPath.appendingPathComponent(imagename)</div><div class="line">    imageURL = <span class="type">URL</span>(fileURLWithPath: path)</div><div class="line">    <span class="keyword">try</span>? imageData.write(to: imageURL, options: [.atomic])</div><div class="line">&#125;</div><div class="line">    </div></pre></td></tr></table></figure>
@@ -1068,6 +1216,132 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/iOS CallKitManager Usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiang Nan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JIANG NAN BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/19/iOS CallKitManager Usage/" itemprop="url">
+                  iOS CallKitManger Usage in Swift
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-19T00:00:00+08:00">
+                2017-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="How-to-use-CallKitManager-with-Swift-Language"><a href="#How-to-use-CallKitManager-with-Swift-Language" class="headerlink" title="How to use CallKitManager with Swift Language"></a>How to use CallKitManager with Swift Language</h1><p>Swift version: 3.0<br>Xcode version: 8.3</p>
+<ol>
+<li><strong>Add below line in the head</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> CallKit</div><div class="line"><span class="keyword">let</span> extensionIdentifier:<span class="type">String</span> = <span class="string">"Your extension identifier"</span></div></pre></td></tr></table></figure></li>
+<li><strong>To check the enable status of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkEnableStatus</span><span class="params">()</span></span> &#123;</div><div class="line">      <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">      globalQueue.async &#123;</div><div class="line">          <span class="keyword">self</span>.callmanager.getEnabledStatusForExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(enablestatus: <span class="type">CXCallDirectoryManager</span>.<span class="type">EnabledStatus</span>, error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">              <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                  <span class="keyword">switch</span> enablestatus &#123;</div><div class="line">                  <span class="keyword">case</span> .disabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  <span class="keyword">case</span> .enabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">true</span></div><div class="line">                  <span class="keyword">case</span> .unknown:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  &#125;</div><div class="line">                  <span class="keyword">self</span>.delegate?.didUpdateEnableStatus(status: <span class="keyword">self</span>.enableStatus)</div><div class="line">              &#125;</div><div class="line">          &#125;)</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></li>
+<li><strong>To reload phone data of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reloadData</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">        globalQueue.async &#123;</div><div class="line">            <span class="keyword">self</span>.callmanager.reloadExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">                <span class="keyword">var</span> status:<span class="type">Bool</span> = <span class="literal">false</span></div><div class="line">                <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                    status = <span class="literal">true</span></div><div class="line">                    <span class="built_in">print</span> (<span class="string">"load phone number data successful."</span>)</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="built_in">print</span> (<span class="string">"error when reload phone data."</span>)</div><div class="line"><span class="comment">//                    print (error?.localizedDescription)</span></div><div class="line">                &#125;</div><div class="line">                <span class="keyword">self</span>.delegate?.didReloadPhoneData(status: status)</div><div class="line">            &#125;)</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/Swift summary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1222,132 +1496,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/iOS CallKitManager Usage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiang Nan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JIANG NAN BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/19/iOS CallKitManager Usage/" itemprop="url">
-                  iOS CallKitManger Usage in Swift
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-19T00:00:00+08:00">
-                2017-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="How-to-use-CallKitManager-with-Swift-Language"><a href="#How-to-use-CallKitManager-with-Swift-Language" class="headerlink" title="How to use CallKitManager with Swift Language"></a>How to use CallKitManager with Swift Language</h1><p>Swift version: 3.0<br>Xcode version: 8.3</p>
-<ol>
-<li><strong>Add below line in the head</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> CallKit</div><div class="line"><span class="keyword">let</span> extensionIdentifier:<span class="type">String</span> = <span class="string">"Your extension identifier"</span></div></pre></td></tr></table></figure></li>
-<li><strong>To check the enable status of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkEnableStatus</span><span class="params">()</span></span> &#123;</div><div class="line">      <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">      globalQueue.async &#123;</div><div class="line">          <span class="keyword">self</span>.callmanager.getEnabledStatusForExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(enablestatus: <span class="type">CXCallDirectoryManager</span>.<span class="type">EnabledStatus</span>, error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">              <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                  <span class="keyword">switch</span> enablestatus &#123;</div><div class="line">                  <span class="keyword">case</span> .disabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  <span class="keyword">case</span> .enabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">true</span></div><div class="line">                  <span class="keyword">case</span> .unknown:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  &#125;</div><div class="line">                  <span class="keyword">self</span>.delegate?.didUpdateEnableStatus(status: <span class="keyword">self</span>.enableStatus)</div><div class="line">              &#125;</div><div class="line">          &#125;)</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></li>
-<li><strong>To reload phone data of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reloadData</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">        globalQueue.async &#123;</div><div class="line">            <span class="keyword">self</span>.callmanager.reloadExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">                <span class="keyword">var</span> status:<span class="type">Bool</span> = <span class="literal">false</span></div><div class="line">                <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                    status = <span class="literal">true</span></div><div class="line">                    <span class="built_in">print</span> (<span class="string">"load phone number data successful."</span>)</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="built_in">print</span> (<span class="string">"error when reload phone data."</span>)</div><div class="line"><span class="comment">//                    print (error?.localizedDescription)</span></div><div class="line">                &#125;</div><div class="line">                <span class="keyword">self</span>.delegate?.didReloadPhoneData(status: status)</div><div class="line">            &#125;)</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1393,7 +1541,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
