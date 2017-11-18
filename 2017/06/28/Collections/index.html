@@ -87,22 +87,18 @@
 
 
 
-<meta name="description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1
-
-To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
+<meta name="description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1  To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Summary of collections">
 <meta property="og:url" content="http://yoursite.com/2017/06/28/Collections/index.html">
 <meta property="og:site_name" content="JIANG NAN BLOG">
-<meta property="og:description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1
-
-To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
-<meta property="og:updated_time" content="2017-06-28T21:38:30.000Z">
+<meta property="og:description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1  To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-09-16T23:22:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary of collections">
-<meta name="twitter:description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1
-
-To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
+<meta name="twitter:description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1  To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
 
 
 
@@ -342,7 +338,10 @@ To iterate an array with StructYou cannot change property of struct in loop. Dur
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="keyword">let</span> d = a.sorted(by: &gt;)</div><div class="line">  </div></pre></td></tr></table></figure>
 </li>
 <li><p>Map </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a4 = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</div><div class="line"><span class="keyword">let</span> b4 = a4.<span class="built_in">map</span> &#123; (item:<span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> item * <span class="number">2</span></div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a4 = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</div><div class="line"><span class="keyword">let</span> b4 = a4.<span class="built_in">map</span> &#123; (item:<span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> item * <span class="number">2</span></div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+<li><p>Reduce</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> status = [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">true</span>]</div><div class="line"><span class="keyword">var</span> s1 = status.<span class="built_in">reduce</span>(<span class="literal">true</span>) &#123; (r, s) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></div><div class="line">  <span class="keyword">return</span> r &amp;&amp; s</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -395,6 +394,10 @@ To iterate an array with StructYou cannot change property of struct in loop. Dur
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/13/Swift summary 3/" rel="prev" title="Summary of Swift 3">
+                Summary of Swift 3 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -466,7 +469,7 @@ To iterate an array with StructYou cannot change property of struct in loop. Dur
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -479,7 +482,7 @@ To iterate an array with StructYou cannot change property of struct in loop. Dur
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>

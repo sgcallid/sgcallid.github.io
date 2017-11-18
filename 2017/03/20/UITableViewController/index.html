@@ -87,19 +87,18 @@
 
 
 
-<meta name="description" content="Summary of UITableViewControllerThe summary of UITableViewController in Swift.Swift version: 3.0Xcode version: 8.2.1
-Basic usage 123456789101112131415extension ViewController: UITableViewDelegate, UIT">
+<meta name="description" content="Summary of UITableViewControllerThe summary of UITableViewController in Swift.Swift version: 3.0Xcode version: 8.2.1 Basic usage 123456789101112131415extension ViewController: UITableViewDelegate, UIT">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Summary of UITableViewController">
 <meta property="og:url" content="http://yoursite.com/2017/03/20/UITableViewController/index.html">
 <meta property="og:site_name" content="JIANG NAN BLOG">
-<meta property="og:description" content="Summary of UITableViewControllerThe summary of UITableViewController in Swift.Swift version: 3.0Xcode version: 8.2.1
-Basic usage 123456789101112131415extension ViewController: UITableViewDelegate, UIT">
-<meta property="og:updated_time" content="2017-06-10T22:59:55.000Z">
+<meta property="og:description" content="Summary of UITableViewControllerThe summary of UITableViewController in Swift.Swift version: 3.0Xcode version: 8.2.1 Basic usage 123456789101112131415extension ViewController: UITableViewDelegate, UIT">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-09-29T06:52:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary of UITableViewController">
-<meta name="twitter:description" content="Summary of UITableViewControllerThe summary of UITableViewController in Swift.Swift version: 3.0Xcode version: 8.2.1
-Basic usage 123456789101112131415extension ViewController: UITableViewDelegate, UIT">
+<meta name="twitter:description" content="Summary of UITableViewControllerThe summary of UITableViewController in Swift.Swift version: 3.0Xcode version: 8.2.1 Basic usage 123456789101112131415extension ViewController: UITableViewDelegate, UIT">
 
 
 
@@ -331,7 +330,10 @@ Basic usage 123456789101112131415extension ViewController: UITableViewDelegate, 
 <li>Select cell and prepare to segue<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepare</span><span class="params">(<span class="keyword">for</span> segue: UIStoryboardSegue, sender: Any?)</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> segue.identifier == <span class="string">"showdetail"</span> &#123;</div><div class="line">        <span class="keyword">let</span> vc = segue.destination <span class="keyword">as</span>! detailViewController</div><div class="line">        vc.index = (bedCollectionView.indexPathsForSelectedItems?[<span class="number">0</span>].row)!</div><div class="line">    &#125;</div><div class="line">&#125; </div><div class="line">  </div></pre></td></tr></table></figure></li>
 <li>Use custom cell in tableview controller<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) <span class="keyword">as</span>! checkListCollectionViewCell</div></pre></td></tr></table></figure></li>
 <li>Delete row from tableview controller. Update UIView in other queue. Update tableview by use tableview.deleteRowAtIndexpath<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">  <span class="class"><span class="keyword">extension</span> <span class="title">savedSongViewController</span>:<span class="title">UITableViewDelegate</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(savedSongTable: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(savedSongTable: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)</span></span> &#123;</div><div class="line">        <span class="keyword">if</span> editingStyle == .<span class="type">Delete</span> &#123;</div><div class="line">            <span class="keyword">self</span>.allSavedSongs.removeAtIndex(indexPath.row)</div><div class="line">            <span class="keyword">self</span>.savedSongs?.favoriteTracks.removeAtIndex(indexPath.row)</div><div class="line">            <span class="keyword">self</span>.savedSongs?.saveAllSongs()</div><div class="line">            <span class="keyword">var</span> selectIndex = [<span class="type">NSIndexPath</span>]()</div><div class="line">            selectIndex.append(indexPath)</div><div class="line">            savedSongTable.deleteRowsAtIndexPaths(selectIndex, withRowAnimation: <span class="type">UITableViewRowAnimation</span>.<span class="type">Fade</span>)</div><div class="line">            dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                <span class="keyword">self</span>.savedSongTable?.reloadData()</div><div class="line">            &#125;)            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
-<li>Detect button/image was tapped in a cell (use protocol)<br><a href="http://candycode.io/how-to-properly-do-buttons-in-table-view-cells/" target="_blank" rel="external">Link</a></li>
+<li><p>Detect button/image was tapped in a cell (use protocol)<br><a href="http://candycode.io/how-to-properly-do-buttons-in-table-view-cells/" target="_blank" rel="external">Link</a></p>
+</li>
+<li><p>Click a cell and popup alertcontroller</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">collectionView</span><span class="params">(<span class="number">_</span> collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> i = indexPath.row</div><div class="line">    <span class="built_in">print</span> (<span class="string">"<span class="subst">\(i)</span>"</span>)</div><div class="line">    <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="string">"Bed"</span>, message: <span class="string">"Select"</span>, preferredStyle: .actionSheet)</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> selectAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Detail"</span>, style: .<span class="keyword">default</span>) &#123; (<span class="number">_</span>) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span> (<span class="string">"show detail"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> cancelAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Cancel"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>)</div><div class="line">    alertController.addAction(selectAction)</div><div class="line">    alertController.addAction(cancelAction)</div><div class="line">    <span class="keyword">let</span> popOver = alertController.popoverPresentationController</div><div class="line">    popOver?.sourceView = collectionView.cellForItem(at: indexPath)</div><div class="line">    popOver?.sourceRect = collectionView.cellForItem(at: indexPath)!.bounds</div><div class="line">    popOver?.permittedArrowDirections = <span class="type">UIPopoverArrowDirection</span>.any</div><div class="line">    </div><div class="line">    present(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -375,8 +377,8 @@ Basic usage 123456789101112131415extension ViewController: UITableViewDelegate, 
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/19/iOS CallKitManager Usage/" rel="next" title="iOS CallKitManger Usage in Swift">
-                <i class="fa fa-chevron-left"></i> iOS CallKitManger Usage in Swift
+              <a href="/2017/03/19/Swift summary/" rel="next" title="Summary of Swift">
+                <i class="fa fa-chevron-left"></i> Summary of Swift
               </a>
             
           </div>
@@ -459,7 +461,7 @@ Basic usage 123456789101112131415extension ViewController: UITableViewDelegate, 
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -472,7 +474,7 @@ Basic usage 123456789101112131415extension ViewController: UITableViewDelegate, 
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>

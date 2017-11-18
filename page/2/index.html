@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -87,18 +87,13 @@
 
 
 
-<meta name="description" content="Summary of Swift developmentThe summary of Swift development.Swift version: 3.0Xcode version: 8.2.1  UIButton: To add action to UIButton Singleton class: How to create and use Singleton class Navigati">
-<meta name="keywords" content="iOS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Summary of Swift">
-<meta property="og:url" content="http://yoursite.com/2017/03/19/Swift summary/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JIANG NAN BLOG">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="JIANG NAN BLOG">
-<meta property="og:description" content="Summary of Swift developmentThe summary of Swift development.Swift version: 3.0Xcode version: 8.2.1  UIButton: To add action to UIButton Singleton class: How to create and use Singleton class Navigati">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-04-30T15:21:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Summary of Swift">
-<meta name="twitter:description" content="Summary of Swift developmentThe summary of Swift development.Swift version: 3.0Xcode version: 8.2.1  UIButton: To add action to UIButton Singleton class: How to create and use Singleton class Navigati">
+<meta name="twitter:title" content="JIANG NAN BLOG">
 
 
 
@@ -126,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/19/Swift summary/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
 
 
-  <title> Summary of Swift | JIANG NAN BLOG </title>
+  <title> JIANG NAN BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -157,7 +152,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -240,9 +237,141 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/20/UITableViewController/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiang Nan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JIANG NAN BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/20/UITableViewController/" itemprop="url">
+                  Summary of UITableViewController
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T00:00:00+08:00">
+                2017-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Summary-of-UITableViewController"><a href="#Summary-of-UITableViewController" class="headerlink" title="Summary of UITableViewController"></a>Summary of UITableViewController</h1><p>The summary of UITableViewController in Swift.<br>Swift version: 3.0<br>Xcode version: 8.2.1</p>
+<p>Basic usage<br> <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span>: <span class="title">UITableViewDelegate</span>, <span class="title">UITableViewDataSource</span> </span>&#123;</div><div class="line">   <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">       <span class="keyword">return</span> messages.<span class="built_in">count</span></div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   <span class="function"><span class="keyword">func</span> <span class="title">numberOfSections</span><span class="params">(<span class="keyword">in</span> tableView: UITableView)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">       <span class="keyword">return</span> <span class="number">1</span></div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">       <span class="keyword">let</span> cell=tableView.dequeueReusableCell(withIdentifier: <span class="string">"message"</span>, <span class="keyword">for</span>: indexPath)</div><div class="line">       cell.textLabel?.text = messages[indexPath.row]</div><div class="line">       <span class="keyword">return</span> cell</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>Select cell and send data to next viewcontroller<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> vc = <span class="keyword">self</span>.storyboard?.instantiateViewControllerWithIdentifier(<span class="string">"studentDetailViewController"</span>) <span class="keyword">as</span>? studentDetailViewController</div><div class="line">vc?.newStudent = <span class="literal">false</span></div><div class="line">vc?.currentStudent = <span class="type">DataManager</span>.copyStudent(<span class="type">Students</span>[indexPath.row])</div><div class="line"><span class="keyword">self</span>.navigationController?.pushViewController(vc!, animated: <span class="literal">true</span>)  </div><div class="line">  </div></pre></td></tr></table></figure></li>
+<li>Select cell and prepare to segue<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepare</span><span class="params">(<span class="keyword">for</span> segue: UIStoryboardSegue, sender: Any?)</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> segue.identifier == <span class="string">"showdetail"</span> &#123;</div><div class="line">        <span class="keyword">let</span> vc = segue.destination <span class="keyword">as</span>! detailViewController</div><div class="line">        vc.index = (bedCollectionView.indexPathsForSelectedItems?[<span class="number">0</span>].row)!</div><div class="line">    &#125;</div><div class="line">&#125; </div><div class="line">  </div></pre></td></tr></table></figure></li>
+<li>Use custom cell in tableview controller<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) <span class="keyword">as</span>! checkListCollectionViewCell</div></pre></td></tr></table></figure></li>
+<li>Delete row from tableview controller. Update UIView in other queue. Update tableview by use tableview.deleteRowAtIndexpath<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">  <span class="class"><span class="keyword">extension</span> <span class="title">savedSongViewController</span>:<span class="title">UITableViewDelegate</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(savedSongTable: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(savedSongTable: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)</span></span> &#123;</div><div class="line">        <span class="keyword">if</span> editingStyle == .<span class="type">Delete</span> &#123;</div><div class="line">            <span class="keyword">self</span>.allSavedSongs.removeAtIndex(indexPath.row)</div><div class="line">            <span class="keyword">self</span>.savedSongs?.favoriteTracks.removeAtIndex(indexPath.row)</div><div class="line">            <span class="keyword">self</span>.savedSongs?.saveAllSongs()</div><div class="line">            <span class="keyword">var</span> selectIndex = [<span class="type">NSIndexPath</span>]()</div><div class="line">            selectIndex.append(indexPath)</div><div class="line">            savedSongTable.deleteRowsAtIndexPaths(selectIndex, withRowAnimation: <span class="type">UITableViewRowAnimation</span>.<span class="type">Fade</span>)</div><div class="line">            dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                <span class="keyword">self</span>.savedSongTable?.reloadData()</div><div class="line">            &#125;)            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
+<li><p>Detect button/image was tapped in a cell (use protocol)<br><a href="http://candycode.io/how-to-properly-do-buttons-in-table-view-cells/" target="_blank" rel="external">Link</a></p>
+</li>
+<li><p>Click a cell and popup alertcontroller</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">collectionView</span><span class="params">(<span class="number">_</span> collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> i = indexPath.row</div><div class="line">    <span class="built_in">print</span> (<span class="string">"<span class="subst">\(i)</span>"</span>)</div><div class="line">    <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="string">"Bed"</span>, message: <span class="string">"Select"</span>, preferredStyle: .actionSheet)</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> selectAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Detail"</span>, style: .<span class="keyword">default</span>) &#123; (<span class="number">_</span>) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span> (<span class="string">"show detail"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> cancelAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Cancel"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>)</div><div class="line">    alertController.addAction(selectAction)</div><div class="line">    alertController.addAction(cancelAction)</div><div class="line">    <span class="keyword">let</span> popOver = alertController.popoverPresentationController</div><div class="line">    popOver?.sourceView = collectionView.cellForItem(at: indexPath)</div><div class="line">    popOver?.sourceRect = collectionView.cellForItem(at: indexPath)!.bounds</div><div class="line">    popOver?.permittedArrowDirections = <span class="type">UIPopoverArrowDirection</span>.any</div><div class="line">    </div><div class="line">    present(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
 
   
 
@@ -272,7 +401,10 @@
             
             
               
-                Summary of Swift
+                
+                <a class="post-title-link" href="/2017/03/19/Swift summary/" itemprop="url">
+                  Summary of Swift
+                </a>
               
             
           </h1>
@@ -323,7 +455,9 @@
       
 
       
-        <h1 id="Summary-of-Swift-development"><a href="#Summary-of-Swift-development" class="headerlink" title="Summary of Swift development"></a>Summary of Swift development</h1><p>The summary of Swift development.<br>Swift version: 3.0<br>Xcode version: 8.2.1</p>
+        
+          
+            <h1 id="Summary-of-Swift-development"><a href="#Summary-of-Swift-development" class="headerlink" title="Summary of Swift development"></a>Summary of Swift development</h1><p>The summary of Swift development.<br>Swift version: 3.0<br>Xcode version: 8.2.1</p>
 <ol>
 <li><a href="#UIButton">UIButton</a>: To add action to UIButton</li>
 <li><a href="#Singleton">Singleton class</a>: How to create and use Singleton class</li>
@@ -367,76 +501,172 @@
 <li><a name="checkiteminarray"></a> <strong> To check an item exist in Array</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="type">Array</span>(sensorsid.keys).<span class="built_in">contains</span>(messageid)&#123;</div><div class="line">              processSensorMessage(json: json, index: messageid)</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure></li>
 </ol>
 
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/iOS/" rel="tag"># iOS</a>
-          
-        </div>
+
       
 
       
-        
-      
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/03/19/iOS CallKitManager Usage/" rel="next" title="iOS CallKitManger Usage in Swift">
-                <i class="fa fa-chevron-left"></i> iOS CallKitManger Usage in Swift
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/20/UITableViewController/" rel="prev" title="Summary of UITableViewController">
-                Summary of UITableViewController <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+      
 
-    <div class="post-spread">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/iOS CallKitManager Usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiang Nan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JIANG NAN BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/19/iOS CallKitManager Usage/" itemprop="url">
+                  iOS CallKitManger Usage in Swift
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-19T00:00:00+08:00">
+                2017-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="How-to-use-CallKitManager-with-Swift-Language"><a href="#How-to-use-CallKitManager-with-Swift-Language" class="headerlink" title="How to use CallKitManager with Swift Language"></a>How to use CallKitManager with Swift Language</h1><p>Swift version: 3.0<br>Xcode version: 8.3</p>
+<ol>
+<li><strong>Add below line in the head</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> CallKit</div><div class="line"><span class="keyword">let</span> extensionIdentifier:<span class="type">String</span> = <span class="string">"Your extension identifier"</span></div></pre></td></tr></table></figure></li>
+<li><strong>To check the enable status of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkEnableStatus</span><span class="params">()</span></span> &#123;</div><div class="line">      <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">      globalQueue.async &#123;</div><div class="line">          <span class="keyword">self</span>.callmanager.getEnabledStatusForExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(enablestatus: <span class="type">CXCallDirectoryManager</span>.<span class="type">EnabledStatus</span>, error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">              <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                  <span class="keyword">switch</span> enablestatus &#123;</div><div class="line">                  <span class="keyword">case</span> .disabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  <span class="keyword">case</span> .enabled:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">true</span></div><div class="line">                  <span class="keyword">case</span> .unknown:</div><div class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></div><div class="line">                  &#125;</div><div class="line">                  <span class="keyword">self</span>.delegate?.didUpdateEnableStatus(status: <span class="keyword">self</span>.enableStatus)</div><div class="line">              &#125;</div><div class="line">          &#125;)</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></li>
+<li><strong>To reload phone data of extension</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reloadData</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</div><div class="line">        globalQueue.async &#123;</div><div class="line">            <span class="keyword">self</span>.callmanager.reloadExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(error:<span class="type">Error</span>?) <span class="keyword">in</span></div><div class="line">                <span class="keyword">var</span> status:<span class="type">Bool</span> = <span class="literal">false</span></div><div class="line">                <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</div><div class="line">                    status = <span class="literal">true</span></div><div class="line">                    <span class="built_in">print</span> (<span class="string">"load phone number data successful."</span>)</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="built_in">print</span> (<span class="string">"error when reload phone data."</span>)</div><div class="line"><span class="comment">//                    print (error?.localizedDescription)</span></div><div class="line">                &#125;</div><div class="line">                <span class="keyword">self</span>.delegate?.didReloadPhoneData(status: status)</div><div class="line">            &#125;)</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">  </div></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
       
     </div>
-  </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
           
           </div>
@@ -444,10 +674,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -467,17 +693,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -530,22 +747,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary-of-Swift-development"><span class="nav-number">1.</span> <span class="nav-text">Summary of Swift development</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -651,10 +852,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
 
   
 
