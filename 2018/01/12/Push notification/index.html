@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="Summary of ARKitThe summary of ARKitSwift version: 4.0Xcode version: 9.0  Use AKKit Save to file 12">
+<meta name="description" content="Summary of Push notificationThe summary of Push notificatoinSwift version: 4.0Xcode version: 9.0  Request to authorization Add below code to Appdedelegate123456789UNUserNotificationCenter.current().de">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Summary of ARKit">
-<meta property="og:url" content="http://yoursite.com/2017/10/07/ARKit/index.html">
+<meta property="og:title" content="Push notification">
+<meta property="og:url" content="http://yoursite.com/2018/01/12/Push notification/index.html">
 <meta property="og:site_name" content="JIANG NAN BLOG">
-<meta property="og:description" content="Summary of ARKitThe summary of ARKitSwift version: 4.0Xcode version: 9.0  Use AKKit Save to file 12">
+<meta property="og:description" content="Summary of Push notificationThe summary of Push notificatoinSwift version: 4.0Xcode version: 9.0  Request to authorization Add below code to Appdedelegate123456789UNUserNotificationCenter.current().de">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-17T13:44:50.000Z">
+<meta property="og:updated_time" content="2018-01-31T14:10:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Summary of ARKit">
-<meta name="twitter:description" content="Summary of ARKitThe summary of ARKitSwift version: 4.0Xcode version: 9.0  Use AKKit Save to file 12">
+<meta name="twitter:title" content="Push notification">
+<meta name="twitter:description" content="Summary of Push notificationThe summary of Push notificatoinSwift version: 4.0Xcode version: 9.0  Request to authorization Add below code to Appdedelegate123456789UNUserNotificationCenter.current().de">
 
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/07/ARKit/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/12/Push notification/"/>
 
 
 
 
 
-  <title> Summary of ARKit | JIANG NAN BLOG </title>
+  <title> Push notification | JIANG NAN BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -251,7 +251,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/07/ARKit/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/Push notification/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiang Nan">
@@ -272,7 +272,7 @@
             
             
               
-                Summary of ARKit
+                Push notification
               
             
           </h1>
@@ -287,8 +287,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-07T00:00:00+08:00">
-                2017-10-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-12T00:00:00+08:00">
+                2018-01-12
               </time>
             
 
@@ -323,12 +323,13 @@
       
 
       
-        <h1 id="Summary-of-ARKit"><a href="#Summary-of-ARKit" class="headerlink" title="Summary of ARKit"></a>Summary of ARKit</h1><p>The summary of ARKit<br>Swift version: 4.0<br>Xcode version: 9.0</p>
+        <h1 id="Summary-of-Push-notification"><a href="#Summary-of-Push-notification" class="headerlink" title="Summary of Push notification"></a>Summary of Push notification</h1><p>The summary of Push notificatoin<br>Swift version: 4.0<br>Xcode version: 9.0</p>
 <ol>
-<li><strong>Use AKKit</strong><ul>
-<li>Save to file <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">    </div></pre></td></tr></table></figure>
-</li>
+<li><strong>Request to authorization</strong><ul>
+<li>Add below code to Appdedelegate<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="type">UNUserNotificationCenter</span>.current().delegate = <span class="keyword">self</span></div><div class="line"><span class="type">UNUserNotificationCenter</span>.current().requestAuthorization(options: [.alert, .badge, .sound]) &#123; (authorized, error) <span class="keyword">in</span></div><div class="line">    <span class="keyword">if</span> authorized &#123;</div><div class="line">        <span class="type">DispatchQueue</span>.main.async &#123;</div><div class="line">            application.registerForRemoteNotifications()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">    </div></pre></td></tr></table></figure></li>
 </ul>
+</li>
+<li><strong>Add below code to handle notification when app in background</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span><span class="params">(<span class="number">_</span> center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping <span class="params">(UNNotificationPresentationOptions)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">  completionHandler([.alert, .sound])</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -382,6 +383,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/01/Python/" rel="prev" title="Python">
+                Python <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -453,7 +458,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -466,7 +471,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -501,7 +506,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary-of-ARKit"><span class="nav-number">1.</span> <span class="nav-text">Summary of ARKit</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary-of-Push-notification"><span class="nav-number">1.</span> <span class="nav-text">Summary of Push notification</span></a></li></ol></div>
             
 
           </div>
@@ -524,7 +529,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
