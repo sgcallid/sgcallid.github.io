@@ -248,6 +248,326 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/13/Swift summary 2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiang Nan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JIANG NAN BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/13/Swift summary 2/" itemprop="url">
+                  Summary of Swift 2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-13T00:00:00+08:00">
+                2017-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Summary-of-Swift-development"><a href="#Summary-of-Swift-development" class="headerlink" title="Summary of Swift development"></a>Summary of Swift development</h1><p>The summary of Swift development. (Part 2)<br>Swift version: 3.0<br>Xcode version: 8.2.1</p>
+<ol>
+<li><a href="#UISwitch">UISwitch</a>: UISwitch usage</li>
+<li><a href="#Animation">Animation</a>: Animation usage</li>
+<li><a href="#ArrayRemove">Array remove item</a>: Remove item from Array</li>
+<li><a href="#AlertController">Add UIAlertcontroller on iPad</a>: Add alertcontroller on iPad</li>
+<li><a href="#NSPredicate">NSPredicate</a>: How to use NSPredicate</li>
+<li><a href="#Motiondetect">Motiondetect</a>: How to detect motion in viewcontroller</li>
+<li><a href="#Playsound">Playsound</a>: Play system sound</li>
+<li><a href="#gradientcolor">Add gradient color</a>: Add gradient color to view controller</li>
+<li><a href="#userdefault">User default</a>: Read/Write userdefault settings</li>
+<li><a href="#system notification">System notification</a>: How to oberserve system notification</li>
+</ol>
+<ol>
+<li><p><a name="UISwitch"></a> <strong>UISwitch usage</strong></p>
+<ul>
+<li>Toggle UISwitch status<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">toggleAlarm</span><span class="params">(<span class="number">_</span> sender:AnyObject)</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> alarmSwitch.isOn &#123;</div><div class="line">        mute = <span class="literal">false</span></div><div class="line">        alarmSwitch.setOn(mute, animated: <span class="literal">true</span>)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        mute = <span class="literal">true</span></div><div class="line">        alarmSwitch.setOn(mute, animated: <span class="literal">true</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="Animation"></a> <strong>Animation usage</strong></p>
+<ul>
+<li>Simple blink animation.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">if</span> isBlink &#123;</div><div class="line">    cell.textLabel?.textColor = <span class="type">UIColor</span>.red</div><div class="line">    <span class="type">UIView</span>.animate(withDuration: <span class="number">1.0</span>, delay: <span class="number">0.0</span>, options: [.allowUserInteraction, .<span class="keyword">repeat</span>], animations: &#123;</div><div class="line">        cell.textLabel?.alpha = <span class="number">0.5</span></div><div class="line">    &#125;, completion: &#123; (finished:<span class="type">Bool</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">    &#125;)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="type">UIView</span>.animate(withDuration: <span class="number">0.1</span>, delay: <span class="number">0.0</span>, options: [.allowUserInteraction], animations: &#123; </div><div class="line">        cell.textLabel?.alpha = <span class="number">1.0</span></div><div class="line">    &#125;, completion: &#123; (finished:<span class="type">Bool</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">    &#125;)</div><div class="line">    cell.textLabel?.textColor = <span class="type">UIColor</span>.white</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="ArrayRemove"></a> <strong>Remove an item from array</strong></p>
+<ul>
+<li>Remove a string from string array.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">blinkSensorName = <span class="type">Array</span>(blinkSensorName.<span class="built_in">filter</span>() &#123;$<span class="number">0</span> != sName&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="AlertController"></a> <strong>Add UIAlertController on ipad navigation bar button</strong></p>
+<ul>
+<li>After add barbutton item on navigation bar.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">menu</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> alertcontroller = <span class="type">UIAlertController</span>(title: <span class="string">"Menu"</span>, message: <span class="string">"Select"</span>, preferredStyle: .actionSheet)</div><div class="line">    <span class="keyword">let</span> startAction = <span class="type">UIAlertAction</span>(title: startstop, style: .<span class="keyword">default</span>) &#123; (<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span> (<span class="string">"Start button in Menu"</span>)</div><div class="line">        <span class="keyword">self</span>.startComm(<span class="string">"a"</span> <span class="keyword">as</span> <span class="type">AnyObject</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> cancelaction = <span class="type">UIAlertAction</span>(title: <span class="string">"Cancel"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>)</div><div class="line">    alertcontroller.addAction(startAction)</div><div class="line">    alertcontroller.addAction(cancelaction)</div><div class="line">    alertcontroller.popoverPresentationController?.barButtonItem = <span class="keyword">self</span>.navigationItem.rightBarButtonItem</div><div class="line">    present(alertcontroller, animated: <span class="literal">false</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="NSPredicate"></a> <strong>Simple example on how to use NSPredicate</strong></p>
+<ul>
+<li>Query record from Realm database.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> dateformatter = <span class="type">DateFormatter</span>()</div><div class="line"><span class="keyword">let</span> dtstring = <span class="string">"2017-06-08 19:00:00"</span></div><div class="line">dateformatter.dateFormat = <span class="string">"YYYY-MM-dd HH:mm:ss"</span></div><div class="line"><span class="keyword">let</span> dt:<span class="type">Date</span> = dateformatter.date(from:dtstring)!</div><div class="line"><span class="keyword">let</span> ht = <span class="string">"heartbeat"</span></div><div class="line"><span class="keyword">let</span> predicate = <span class="type">NSPredicate</span>(format: <span class="string">"timestamp &gt;= %@ AND status != %@"</span>, dt <span class="keyword">as</span> <span class="type">CVarArg</span>, ht <span class="keyword">as</span> <span class="type">CVarArg</span>)</div><div class="line"><span class="keyword">let</span> queryrecord = realm.objects(record.<span class="keyword">self</span>).<span class="built_in">filter</span>(predicate)</div><div class="line">    </div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="Motiondetect"></a> <strong>Detect motion in viewcontroller</strong></p>
+<ul>
+<li>Override func in viewcontroller.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">motionEnded</span><span class="params">(motion: UIEventSubtype, withEvent event: UIEvent?)</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> motion == .<span class="type">MotionShake</span> &#123;</div><div class="line">        <span class="keyword">self</span>.saveThisSong()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">    </div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="Playsound"></a> <strong>Play system sound</strong></p>
+<ul>
+<li>Play system sound once.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> systemSoudID:<span class="type">SystemSoundID</span> = <span class="number">1016</span></div><div class="line"><span class="type">AudioServicesPlaySystemSound</span>(systemSoudID)</div><div class="line">    </div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="gradientcolor"></a> <strong> Gradient color to view controller</strong></p>
+<ul>
+<li>Add gradient color to background<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> gradient = <span class="type">CAGradientLayer</span>()</div><div class="line">gradient.frame = <span class="keyword">self</span>.view.bounds</div><div class="line">gradient.colors = [<span class="type">UIColor</span>.blue.cgColor, <span class="type">UIColor</span>.green.cgColor]</div><div class="line"><span class="keyword">self</span>.view.layer.insertSublayer(gradient, at: <span class="number">0</span>)</div><div class="line">    </div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="userdefault"></a> <strong> Read and write user default setting</strong></p>
+<ul>
+<li>Read and write user default<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> defaults = <span class="type">UserDefaults</span>.standard</div><div class="line">defaults.<span class="keyword">set</span>(owner, forKey: <span class="type">RecordField</span>.owner.rawValue)</div><div class="line"></div><div class="line"><span class="keyword">let</span> defaults = <span class="type">UserDefaults</span>.standard</div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> o = defaults.string(forKey: <span class="type">RecordField</span>.owner.rawValue) &#123;</div><div class="line">    <span class="built_in">print</span> (o)</div><div class="line">&#125;</div><div class="line">    </div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="system notification"></a> <strong> How to add obersver for system notification </strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, selector: #selector(<span class="type">ViewController</span>.didBecomeActiveNotificaitonReceived), name: <span class="type">NSNotification</span>.<span class="type">Name</span>(rawValue: <span class="string">"UIApplicationDidBecomeActiveNotification"</span>), object: <span class="literal">nil</span>)</div><div class="line"></div><div class="line"><span class="keyword">deinit</span> &#123;</div><div class="line">    <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.removeObserver(<span class="keyword">self</span>, name: <span class="type">NSNotification</span>.<span class="type">Name</span>(rawValue: <span class="string">"UIApplicationDidBecomeActiveNotification"</span>), object: <span class="literal">nil</span>)</div><div class="line">&#125;</div><div class="line">    </div></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/30/Convert/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiang Nan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JIANG NAN BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/30/Convert/" itemprop="url">
+                  All about convert
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-30T00:00:00+08:00">
+                2017-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="All-about-convert-date-string-data"><a href="#All-about-convert-date-string-data" class="headerlink" title="All about convert (date, string, data)"></a>All about convert (date, string, data)</h1><p>The summary of convert in Swift.<br>Swift version: 3.0<br>Xcode version: 8.2.1</p>
+<ol>
+<li><p>Convert Date to String</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> msg = <span class="string">""</span></div><div class="line"><span class="keyword">let</span> dateformatter = <span class="type">DateFormatter</span>()</div><div class="line">dateformatter.dateFormat = <span class="string">"HH:mm:ss"</span></div><div class="line">msg = msg + dateformatter.string(from: timestamp) </div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+<li><p>Convert time difference to String</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ct = <span class="type">Date</span>()</div><div class="line"><span class="keyword">var</span> ts = <span class="string">""</span></div><div class="line"><span class="keyword">var</span> ms = <span class="string">""</span></div><div class="line"><span class="keyword">var</span> ss = <span class="string">""</span></div><div class="line"><span class="keyword">if</span> a.alarmStatus &#123;</div><div class="line">    <span class="keyword">let</span> components = <span class="type">Calendar</span>.current.dateComponents([.minute, .second], from: a.alarmtimestamp, to: ct)</div><div class="line">    ms = <span class="string">"<span class="subst">\(components.minute ?? <span class="number">0</span>)</span>:"</span></div><div class="line">    ss = <span class="string">"<span class="subst">\(components.second ?? <span class="number">0</span>)</span>"</span></div><div class="line">    ts = ms + ss</div><div class="line">&#125;</div><div class="line">cell.bedLabel.text = ts</div><div class="line">  </div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/08/Cloudkit Usage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -965,7 +1285,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -978,7 +1298,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>

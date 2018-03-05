@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1  To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
+<meta name="description" content="Notes on Location ManagerSwift version: 3.0Xcode version: 8.3  To show map in mapview 1234let initlocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 1.34549354899945, longitude: 103.83">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Summary of collections">
-<meta property="og:url" content="http://yoursite.com/2017/06/28/Collections/index.html">
+<meta property="og:title" content="iOS Core Location in Swift">
+<meta property="og:url" content="http://yoursite.com/2018/03/05/Core location/index.html">
 <meta property="og:site_name" content="JIANG NAN BLOG">
-<meta property="og:description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1  To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
+<meta property="og:description" content="Notes on Location ManagerSwift version: 3.0Xcode version: 8.3  To show map in mapview 1234let initlocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 1.34549354899945, longitude: 103.83">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-12T22:20:07.000Z">
+<meta property="og:updated_time" content="2018-03-05T15:48:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Summary of collections">
-<meta name="twitter:description" content="Summary of collectionsThe summary of collections.Swift version: 3.0Xcode version: 8.2.1  To iterate an array with StructYou cannot change property of struct in loop. During the loop, you are operate t">
+<meta name="twitter:title" content="iOS Core Location in Swift">
+<meta name="twitter:description" content="Notes on Location ManagerSwift version: 3.0Xcode version: 8.3  To show map in mapview 1234let initlocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 1.34549354899945, longitude: 103.83">
 
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/28/Collections/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/05/Core location/"/>
 
 
 
 
 
-  <title> Summary of collections | JIANG NAN BLOG </title>
+  <title> iOS Core Location in Swift | JIANG NAN BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -251,7 +251,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/Collections/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/Core location/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiang Nan">
@@ -272,7 +272,7 @@
             
             
               
-                Summary of collections
+                iOS Core Location in Swift
               
             
           </h1>
@@ -287,8 +287,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-28T00:00:00+08:00">
-                2017-06-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T00:00:00+08:00">
+                2018-03-05
               </time>
             
 
@@ -323,25 +323,14 @@
       
 
       
-        <h1 id="Summary-of-collections"><a href="#Summary-of-collections" class="headerlink" title="Summary of collections"></a>Summary of collections</h1><p>The summary of collections.<br>Swift version: 3.0<br>Xcode version: 8.2.1</p>
+        <h1 id="Notes-on-Location-Manager"><a href="#Notes-on-Location-Manager" class="headerlink" title="Notes on Location Manager"></a>Notes on Location Manager</h1><p>Swift version: 3.0<br>Xcode version: 8.3</p>
 <ol>
-<li><p>To iterate an array with Struct<br>You cannot change property of struct in loop. During the loop, you are operate the copy of the struct. Old loop method should be used for it. </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">0</span>..&lt;nearbyTrolleys.<span class="built_in">count</span> &#123;</div><div class="line">    nearbyTrolleys[index].<span class="built_in">distance</span> = nearbyTrolleys[index].location.<span class="built_in">distance</span>(from: currentlocation)</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure>
+<li><p><strong>To show map in mapview</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> initlocation:<span class="type">CLLocationCoordinate2D</span> = <span class="type">CLLocationCoordinate2D</span>(latitude: <span class="number">1.34549354899945</span>, longitude: <span class="number">103.83823575360742</span>)</div><div class="line"><span class="keyword">let</span> regionradius:<span class="type">CLLocationDistance</span> = <span class="number">30000</span></div><div class="line"><span class="keyword">let</span> region = <span class="type">MKCoordinateRegionMakeWithDistance</span>(initlocation, regionradius, regionradius)</div><div class="line">singaporeMap.setRegion(region, animated: <span class="literal">true</span>)</div></pre></td></tr></table></figure>
 </li>
-<li><p>Check item exist in array</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b:[<span class="type">String</span>] = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>]****</div><div class="line">b.<span class="built_in">contains</span>(<span class="string">"a"</span>)</div><div class="line">  </div></pre></td></tr></table></figure>
+<li><p><strong>Init location manager</strong></p>
+ <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">initloactionManger</span><span class="params">()</span></span> &#123;</div><div class="line">    locationmanager.delegate = <span class="keyword">self</span></div><div class="line">    <span class="keyword">if</span> <span class="type">CLLocationManager</span>.locationServicesEnabled() &#123;</div><div class="line">        <span class="keyword">switch</span> <span class="type">CLLocationManager</span>.authorizationStatus() &#123;</div><div class="line">        <span class="keyword">case</span> .notDetermined, .restricted, .denied:</div><div class="line">            locationmanager.requestWhenInUseAuthorization()</div><div class="line">        <span class="keyword">case</span> .authorizedWhenInUse, .authorizedAlways:</div><div class="line">            locationEnabled = <span class="literal">true</span></div><div class="line">            locationmanager.desiredAccuracy = kCLLocationAccuracyBest</div><div class="line">            locationmanager.distanceFilter = <span class="number">25</span></div><div class="line">            locationmanager.startUpdatingLocation()</div><div class="line">            currentlocation = <span class="literal">nil</span></div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">return</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">    </div></pre></td></tr></table></figure>
 </li>
-<li><p>Filter item in array</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="keyword">let</span> a3 = a.<span class="built_in">filter</span>&#123;$<span class="number">0</span> == <span class="number">2</span>&#125;</div><div class="line"><span class="built_in">print</span>(a3)</div><div class="line">  </div></pre></td></tr></table></figure>
-</li>
-<li><p>Sort array</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="keyword">let</span> d = a.sorted(by: &gt;)</div><div class="line">  </div></pre></td></tr></table></figure>
-</li>
-<li><p>Map </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a4 = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</div><div class="line"><span class="keyword">let</span> b4 = a4.<span class="built_in">map</span> &#123; (item:<span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> item * <span class="number">2</span></div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure>
-</li>
-<li><p>Reduce</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> status = [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">true</span>]</div><div class="line"><span class="keyword">var</span> s1 = status.<span class="built_in">reduce</span>(<span class="literal">true</span>) &#123; (r, s) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></div><div class="line">  <span class="keyword">return</span> r &amp;&amp; s</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -385,8 +374,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/08/git/" rel="next" title="Git Command list">
-                <i class="fa fa-chevron-left"></i> Git Command list
+              <a href="/2018/02/18/bash command/" rel="next" title="BASH command">
+                <i class="fa fa-chevron-left"></i> BASH command
               </a>
             
           </div>
@@ -394,10 +383,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/13/Swift summary 3/" rel="prev" title="Summary of Swift 3">
-                Summary of Swift 3 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -517,7 +502,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary-of-collections"><span class="nav-number">1.</span> <span class="nav-text">Summary of collections</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-on-Location-Manager"><span class="nav-number">1.</span> <span class="nav-text">Notes on Location Manager</span></a></li></ol></div>
             
 
           </div>
