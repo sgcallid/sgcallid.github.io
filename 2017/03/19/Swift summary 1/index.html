@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Summary of Swift 1 | JIANG NAN BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="UIButton: To add action to UIButton Singleton class: How to create and use Singleton class Navigation bar: Navigation bar usage Alert Controller: Alertcontroller usage Rate Apps in Appstore: Rate App">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Summary of Swift 1">
+<meta property="og:url" content="http://yoursite.com/2017/03/19/Swift summary 1/index.html">
+<meta property="og:site_name" content="JIANG NAN BLOG">
+<meta property="og:description" content="UIButton: To add action to UIButton Singleton class: How to create and use Singleton class Navigation bar: Navigation bar usage Alert Controller: Alertcontroller usage Rate Apps in Appstore: Rate App">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-04-28T12:35:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Summary of Swift 1">
+<meta name="twitter:description" content="UIButton: To add action to UIButton Singleton class: How to create and use Singleton class Navigation bar: Navigation bar usage Alert Controller: Alertcontroller usage Rate Apps in Appstore: Rate App">
+  
+    <link rel="alternate" href="/atom.xml" title="JIANG NAN BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JIANG NAN BLOG</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Development Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Swift summary 1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/19/Swift summary 1/" class="article-date">
+  <time datetime="2017-03-18T16:00:00.000Z" itemprop="datePublished">2017-03-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Summary of Swift 1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><a href="#UIButton">UIButton</a>: To add action to UIButton</li>
+<li><a href="#Singleton">Singleton class</a>: How to create and use Singleton class</li>
+<li><a href="#Navigationbar">Navigation bar</a>: Navigation bar usage</li>
+<li><a href="#Alertcontroller">Alert Controller</a>: Alertcontroller usage</li>
+<li><a href="#Rateapp">Rate Apps in Appstore</a>: Rate App in Appstore</li>
+<li><a href="#selectphoto">Select photo from album</a>: Select photo from album</li>
+<li><a href="#dispatch">Background dispatch</a>: Background dispatch queues</li>
+<li><a href="#notification">Notification</a>: Notification</li>
+<li><a href="#pushviewcontroller">PushViewController</a>: Push viewController</li>
+<li><a href="#presentviewcontroller">PresentViewController</a>: Present viewController</li>
+<li><a href="#timerTask">RunTaskbyTimer</a>: To start a timer task</li>
+<li><a href="#checkiteminarray">Check item in Array</a>: To check an item exist in Array</li>
+</ol>
+<ol>
+<li><a name="UIButton"></a> <strong>UIButton usage</strong><ul>
+<li>Add target to UIButton.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">button.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">MyClass</span>.buttonTapped),</div><div class="line">                forControlEvents: .<span class="type">TouchUpInside</span>)</div></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Add bar button and its action.<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> barbutton = <span class="type">UIBarButtonItem</span>(title: <span class="string">"save"</span>, style: <span class="type">UIBarButtonItemStyle</span>.<span class="type">Plain</span>, </div><div class="line">    target: <span class="keyword">self</span>, action: #selector(saveAlbum))</div><div class="line"><span class="keyword">self</span>.navigationItem.rightBarButtonItem = barbutton</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><p><a name="Singleton"></a> <strong>Singleton class usage</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">currentUserInfo</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">let</span> sharedCurrentUserInstance = currentUserInfo()</div><div class="line">    <span class="keyword">var</span> userRealName = <span class="string">""</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">init</span>() &#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> a = currentUserInfo.sharedCurrentUserInstance.userRealName</div></pre></td></tr></table></figure>
+</li>
+<li><p><a name="Navigationbar"></a> <strong>Navigation bar usage</strong></p>
+<ul>
+<li>Add bar button and its action<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> barbutton = <span class="type">UIBarButtonItem</span>(title: <span class="string">"save"</span>, style: <span class="type">UIBarButtonItemStyle</span>.<span class="type">Plain</span>, </div><div class="line">target: <span class="keyword">self</span>, action: #selector(saveAlbum))</div><div class="line"><span class="keyword">self</span>.navigationItem.rightBarButtonItem = barbutton</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="Alertcontroller"></a> <strong>Alert controller usage</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">reportSpamMail</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="string">"Report"</span>, message: <span class="string">"Report spam number"</span>, preferredStyle: .alert)</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> sendAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Report"</span>, style: .<span class="keyword">default</span>, handler: &#123;(<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">        <span class="keyword">let</span> receipients = [<span class="keyword">self</span>.mailAddress]</div><div class="line">        <span class="keyword">let</span> subject = <span class="string">"From sgCallerID"</span></div><div class="line">        <span class="keyword">let</span> messagebody = <span class="string">""</span></div><div class="line">        </div><div class="line">        <span class="keyword">let</span> mailVC = <span class="keyword">self</span>.configureMail(receipients: receipients, subject: subject, messageBody: messagebody)</div><div class="line">        <span class="keyword">if</span> <span class="type">MFMailComposeViewController</span>.canSendMail() &#123;</div><div class="line">            <span class="keyword">self</span>.present(mailVC, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> cancelAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Cancel"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>)</div><div class="line">    alertController.addAction(sendAction)</div><div class="line">    alertController.addAction(cancelAction)</div><div class="line">    </div><div class="line">    present(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li><a name="Rateapp"></a> <strong>Rate App in Appstore</strong><br>To rate the apps in the Appstore<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">rateApp</span><span class="params">(appId:String, completion: @escaping <span class="params">(<span class="params">(<span class="number">_</span> success: Bool)</span></span></span></span> -&gt;())) &#123;</div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> url = <span class="type">URL</span>(string: <span class="string">"itms-apps://itunes.apple.com/app/"</span> + appId) <span class="keyword">else</span> &#123;</div><div class="line">        completion(<span class="literal">false</span>)</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">guard</span> #available(iOS <span class="number">10</span>, *) <span class="keyword">else</span> &#123;</div><div class="line">        completion(<span class="type">UIApplication</span>.shared.openURL(url))</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="type">UIApplication</span>.shared.<span class="keyword">open</span>(url, options: [:], completionHandler: completion)</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li><a name="selectphoto"></a> <strong>Select photo from libary</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addPhoto</span><span class="params">()</span></span> &#123;</div><div class="line">    imagePicker.allowsEditing = <span class="literal">false</span></div><div class="line">    imagePicker.sourceType = .<span class="type">PhotoLibrary</span></div><div class="line">    imagePicker.delegate = <span class="keyword">self</span></div><div class="line">    presentViewController(imagePicker, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">addPhotoViewController</span>:<span class="title">UIImagePickerControllerDelegate</span>,<span class="title">UINavigationControllerDelegate</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">imagePickerController</span><span class="params">(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?)</span></span> &#123;</div><div class="line">        <span class="keyword">self</span>.selectPhoto[<span class="keyword">self</span>.selectPhotoIndex] = image</div><div class="line">        <span class="keyword">self</span>.photoStatus[<span class="keyword">self</span>.selectPhotoIndex] = <span class="literal">true</span></div><div class="line">        <span class="keyword">self</span>.dismissViewControllerAnimated(<span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">        newphotoCollectionView.reloadData()</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">imagePickerControllerDidCancel</span><span class="params">(picker: UIImagePickerController)</span></span> &#123;</div><div class="line">        dismissViewControllerAnimated(<span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li><a name="dispatch"></a> <strong>Background dispatch queues</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="type">DispatchQueue</span>.global().async &#123;</div><div class="line">        <span class="built_in">print</span> (message)</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li><a name="notification"></a> <strong>Notification</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">// Define identifier</span></div><div class="line"><span class="keyword">let</span> notificationName = <span class="type">Notification</span>.<span class="type">Name</span>(<span class="string">"NotificationIdentifier"</span>)</div><div class="line"></div><div class="line"><span class="comment">// Register to receive notification</span></div><div class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, </div><div class="line">    selector: #selector(<span class="type">YourClassName</span>.methodOfReceivedNotification), </div><div class="line">    name: notificationName, object: <span class="literal">nil</span>)</div><div class="line"></div><div class="line"><span class="comment">// Post notification</span></div><div class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.post(name: notificationName, object: <span class="literal">nil</span>)</div><div class="line"></div><div class="line"><span class="comment">// Stop listening notification</span></div><div class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.removeObserver(<span class="keyword">self</span>, name: notificationName, object: <span class="literal">nil</span>);</div><div class="line">  </div></pre></td></tr></table></figure></li>
+<li><a name="pushviewcontroller"></a> <strong>Push viewController</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> storyboard = <span class="type">UIStoryboard</span>(name: <span class="string">"ContentDelivery"</span>, bundle: <span class="literal">nil</span>)</div><div class="line"><span class="keyword">let</span> webViewController = storyboard.instantiateViewControllerWithIdentifier(<span class="string">"ContentDeliveryWebViewController"</span>) <span class="keyword">as</span>! <span class="type">ContentDeliveryWebViewController</span></div><div class="line">webViewController.url = url</div><div class="line">webViewController.title = content.key</div><div class="line"><span class="keyword">self</span>.navigationController?.pushViewController(webViewController, animated: <span class="literal">true</span>)</div></pre></td></tr></table></figure></li>
+<li><a name="presentviewcontroller"></a> <strong>Present viewController</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">toNextViewController</span><span class="params">()</span></span> &#123;</div><div class="line">  <span class="keyword">let</span> storyboard = <span class="type">UIStoryboard</span>(name: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>)</div><div class="line">  <span class="keyword">var</span> nextVc:<span class="type">UIViewController</span></div><div class="line">  <span class="keyword">if</span> <span class="keyword">let</span> a = <span class="type">AVUser</span>.currentUser() &#123;</div><div class="line">      nextVc = storyboard.instantiateViewControllerWithIdentifier(<span class="string">"tabbar"</span>)</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">      nextVc = storyboard.instantiateViewControllerWithIdentifier(<span class="string">"login"</span>)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">self</span>.window?.rootViewController = nextVc</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li><a name="timerTask"></a> <strong>To start a timer task</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> timer = <span class="type">Timer</span>()</div><div class="line"><span class="keyword">self</span>.timer = <span class="type">Timer</span>.scheduledTimer(timeInterval: <span class="number">5.0</span>,</div><div class="line">                            target: <span class="keyword">self</span>,</div><div class="line">                            selector: #selector(<span class="keyword">self</span>.checkSensor),</div><div class="line">                            userInfo: <span class="literal">nil</span>,</div><div class="line">                            repeats: <span class="literal">true</span>)</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkSensor</span><span class="params">()</span></span> &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li><a name="checkiteminarray"></a> <strong> To check an item exist in Array</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="type">Array</span>(sensorsid.keys).<span class="built_in">contains</span>(messageid)&#123;</div><div class="line">              processSensorMessage(json: json, index: messageid)</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/19/Swift summary 1/" data-id="cjgjddyt8000nfhbmx79nwo11" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/20/UITableViewController/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Summary of UITableViewController
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/19/iOS CallKitManager Usage/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">iOS CallKitManger Usage in Swift</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BASH/">BASH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Parse/">Parse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AWS/" style="font-size: 10px;">AWS</a> <a href="/tags/BASH/" style="font-size: 10px;">BASH</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Parse/" style="font-size: 10px;">Parse</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/05/Core location/">iOS Core Location in Swift</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/18/bash command/">BASH command</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/01/Python/">Python</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/01/aws/">AWS</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/12/Push notification/">Push notification</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Jiang Nan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
