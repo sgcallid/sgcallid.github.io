@@ -1,39 +1,1199 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>JIANG NAN's BLOG | Program note</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">JIANG NAN's BLOG</h1><a id="logo" href="/.">JIANG NAN's BLOG</a><p class="description">Program note</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2019/10/03/flask/">Deploy Flask server</a></h1><div class="post-meta">2019-10-03</div><div class="post-content"><ul>
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JIANG NAN&#39;s BLOG</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url(undefined)">
+        <div class='av-pic' style="background-image: url(undefined)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>JIANG NAN&#39;s BLOG</div>
+        
+            <div>Program note</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/10/03/flask/">Deploy Flask server</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2019-10-02T16:00:00.000Z" itemprop="datePublished">
+    2019-10-03
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Flask/">Flask</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
 <li><p>Install required packages</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx supervisor python-pip python-virtualenv</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2019/10/03/flask/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/06/01/SystemTools/">Development enviroment setup</a></h1><div class="post-meta">2018-06-01</div><div class="post-content"><ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx supervisor python-pip python-virtualenv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Create virtual environment</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">virtualenv .env</span><br><span class="line">activate .env/bin/activate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Create Flask app</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello world'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Run the app<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python app.py</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>Setup gunicorn</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">pip</span> <span class="selector-tag">install</span> <span class="selector-tag">gunicorn</span></span><br><span class="line"><span class="selector-tag">gunicorn</span> <span class="selector-tag">app</span><span class="selector-pseudo">:app</span> <span class="selector-tag">-b</span> <span class="selector-tag">localhost</span><span class="selector-pseudo">:8000</span> &amp;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Create supervisor file in /etc/supervisor/conf.d/hello_world.conf</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[program:hello_world]</span></span><br><span class="line"><span class="attr">directory</span>=/home/hello_world</span><br><span class="line"><span class="attr">command</span>=/home/.env/bin/gunicorn app:app -b localhost:<span class="number">8000</span></span><br><span class="line"><span class="attr">autostart</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">autorestart</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">stderr_logfile</span>=/var/log/hello_world/hello_world.err.log</span><br><span class="line"><span class="attr">stdout_logfile</span>=/var/log/hello_world/hello_world.out.log</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Enable the configuration<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo supervisorctl reread</span><br><span class="line">sudo<span class="built_in"> service </span>supervisor restart</span><br></pre></td></tr></table></figure></p>
+<p>Check the status<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo supervisorctl status</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Setup nginx <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">vim</span> /etc/nginx/<span class="keyword">conf</span>.d/virtual.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> domain_name;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">	<span class="attribute">proxy_pass</span> http://127.0.0.1:8000;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>restart the service<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br><span class="line">sudo service nginx restart</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/06/01/SystemTools/">Development enviroment setup</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-05-31T16:00:00.000Z" itemprop="datePublished">
+    2018-06-01
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Linux/">Linux</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
 <li>Vim </li>
 </ul>
 <ol>
-<li>Config by edit the file ~/.vimrc</li></div><p class="readmore"><a href="/2018/06/01/SystemTools/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/03/05/Core location/">iOS Core Location in Swift</a></h1><div class="post-meta">2018-03-05</div><div class="post-content"><ol>
+<li>Config by edit the file ~/.vimrc</li>
+<li>Install Plugins and theme. Use package manager Vundle</li>
+</ol>
+<ul>
+<li>oh-my-zsh</li>
+</ul>
+<ol>
+<li>Config by edit the file ~/.zshrc</li>
+<li>Select theme and copy variables from ~/.bash_profile</li>
+</ol>
+<ul>
+<li>Tmux</li>
+</ul>
+<ol>
+<li><p>Config by edit the file ~/.tmux.conf</p>
+</li>
+<li><p>Use plugin manager to install plugin</p>
+<ul>
+<li>tmux-resurrect</li>
+<li>tmux-mem-cpu-load</li>
+</ul>
+</li>
+<li><p>Some frequently use command</p>
+<ul>
+<li>Ctl-b, Ctl-I to install plugin</li>
+<li>Ctl-b, R to reload config settings</li>
+<li>Ctl-b, Ctl-s to save current session layout</li>
+<li>Ctl-b, Ctl-r to restore layout</li>
+<li>Ctl-b, :resize-p -U 10 to change panel size</li>
+<li>Ctl-b, z to zoom panel</li>
+<li>Ctl-b, o to switch panel</li>
+<li>Ctl-b, x to close panel</li>
+<li>Ctl-b, d to detach session</li>
+<li>tmux new -s session_name to create new session</li>
+<li>tmux kill-session -t session_name to kill session</li>
+<li>tmux ls to list all session</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/03/05/Core location/">iOS Core Location in Swift</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-03-04T16:00:00.000Z" itemprop="datePublished">
+    2018-03-05
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/iOS/">iOS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
 <li><p>To show map in mapview</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> initlocation:<span class="type">CLLocationCoordinate2D</span> = <span class="type">CLLocationCoordinate2D</span>(latitude: <span class="number">1.34549354899945</span>, longitude: <span class="number">103.83823575360742</span>)</span><br><span class="line"><span class="keyword">let</span> regionradius:<span class="type">CLLocationDistance</span> = <span class="number">30000</span></span><br><span class="line"><span class="keyword">let</span> region = <span class="type">MKCoordinateRegionMakeWithDistance</span>(initlocation, regionradius, regionradius)</span><br><span class="line">singaporeMap.setRegion(region, animated: <span class="literal">true</span>)</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2018/03/05/Core location/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/02/18/bash command/">BASH command</a></h1><div class="post-meta">2018-02-18</div><div class="post-content"><p>生活在 Bash Shell 中，熟记以下快捷键，将极大的提高你的命令行操作效率。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> initlocation:<span class="type">CLLocationCoordinate2D</span> = <span class="type">CLLocationCoordinate2D</span>(latitude: <span class="number">1.34549354899945</span>, longitude: <span class="number">103.83823575360742</span>)</span><br><span class="line"><span class="keyword">let</span> regionradius:<span class="type">CLLocationDistance</span> = <span class="number">30000</span></span><br><span class="line"><span class="keyword">let</span> region = <span class="type">MKCoordinateRegionMakeWithDistance</span>(initlocation, regionradius, regionradius)</span><br><span class="line">singaporeMap.setRegion(region, animated: <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Init location manager</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">initloactionManger</span><span class="params">()</span></span> &#123;</span><br><span class="line">    locationmanager.delegate = <span class="keyword">self</span></span><br><span class="line">    <span class="keyword">if</span> <span class="type">CLLocationManager</span>.locationServicesEnabled() &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="type">CLLocationManager</span>.authorizationStatus() &#123;</span><br><span class="line">        <span class="keyword">case</span> .notDetermined, .restricted, .denied:</span><br><span class="line">            locationmanager.requestWhenInUseAuthorization()</span><br><span class="line">        <span class="keyword">case</span> .authorizedWhenInUse, .authorizedAlways:</span><br><span class="line">            locationEnabled = <span class="literal">true</span></span><br><span class="line">            locationmanager.desiredAccuracy = kCLLocationAccuracyBest</span><br><span class="line">            locationmanager.distanceFilter = <span class="number">25</span></span><br><span class="line">            locationmanager.startUpdatingLocation()</span><br><span class="line">            currentlocation = <span class="literal">nil</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/02/18/bash command/">BASH command</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-02-17T16:00:00.000Z" itemprop="datePublished">
+    2018-02-18
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/BASH/">BASH</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>生活在 Bash Shell 中，熟记以下快捷键，将极大的提高你的命令行操作效率。</p>
 <p>编辑命令</p>
-<p>Ctrl + a ：移到命令行首<br>Ctrl + e ：移到命令行尾<br>Ctrl + f ：按字符前移（右向）<br>Ctrl + b ：按字符后移（左向）<br>Alt + f ：按单词前移（右向）<br>Alt + b ：按单词后移（左向）<br>Ctrl + xx：在命令行首和光标之间移动<br>Ctrl + u ：从光标处删除至命令行首<br>Ctrl + k ：从光标处删除至命令行尾<br>Ctrl + w ：从光标处删除至字首<br>Alt + d ：从光标处删除至字尾<br>Ctrl + d ：删除光标处的字符<br>Ctrl + h ：删除光标前的字符<br>Ctrl + y ：粘贴至光标后<br>Alt + c ：从光标处更改为首字母大写的单词<br>Alt + u ：从光标处更改为全部大写的单词<br>Alt + l ：从光标处更改为全部小写的单词<br>Ctrl + t ：交换光标处和之前的字符<br>Alt + t ：交换光标处和之前的单词<br>Alt + Backspace：与 Ctrl + w 相同类似，分隔符有些差别 [感谢 rezilla 指正]<br>重新执行命令</p></div><p class="readmore"><a href="/2018/02/18/bash command/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/02/01/aws/">AWS</a></h1><div class="post-meta">2018-02-01</div><div class="post-content"><ul>
+<p>Ctrl + a ：移到命令行首<br>Ctrl + e ：移到命令行尾<br>Ctrl + f ：按字符前移（右向）<br>Ctrl + b ：按字符后移（左向）<br>Alt + f ：按单词前移（右向）<br>Alt + b ：按单词后移（左向）<br>Ctrl + xx：在命令行首和光标之间移动<br>Ctrl + u ：从光标处删除至命令行首<br>Ctrl + k ：从光标处删除至命令行尾<br>Ctrl + w ：从光标处删除至字首<br>Alt + d ：从光标处删除至字尾<br>Ctrl + d ：删除光标处的字符<br>Ctrl + h ：删除光标前的字符<br>Ctrl + y ：粘贴至光标后<br>Alt + c ：从光标处更改为首字母大写的单词<br>Alt + u ：从光标处更改为全部大写的单词<br>Alt + l ：从光标处更改为全部小写的单词<br>Ctrl + t ：交换光标处和之前的字符<br>Alt + t ：交换光标处和之前的单词<br>Alt + Backspace：与 Ctrl + w 相同类似，分隔符有些差别 [感谢 rezilla 指正]<br>重新执行命令</p>
+<p>Ctrl + r：逆向搜索命令历史<br>Ctrl + g：从历史搜索模式退出<br>Ctrl + p：历史中的上一条命令<br>Ctrl + n：历史中的下一条命令<br>Alt + .：使用上一条命令的最后一个参数<br>控制命令</p>
+<p>Ctrl + l：清屏<br>Ctrl + o：执行当前命令，并选择上一条命令<br>Ctrl + s：阻止屏幕输出<br>Ctrl + q：允许屏幕输出<br>Ctrl + c：终止命令<br>Ctrl + z：挂起命令<br>Bang (!) 命令</p>
+<p>!!：执行上一条命令<br>!blah：执行最近的以 blah 开头的命令，如 !ls<br>!blah:p：仅打印输出，而不执行<br>!$：上一条命令的最后一个参数，与 Alt + . 相同<br>!$:p：打印输出 !$ 的内容<br>!<em>：上一条命令的所有参数<br>!</em>:p：打印输出 !* 的内容<br>^blah：删除上一条命令中的 blah<br>^blah^foo：将上一条命令中的 blah 替换为 foo<br>^blah^foo^：将上一条命令中所有的 blah 都替换为 foo<br>友情提示：</p>
+<p>以上介绍的大多数 Bash 快捷键仅当在 emacs 编辑模式时有效，若你将 Bash 配置为 vi 编辑模式，那将遵循 vi 的按键绑定。Bash 默认为 emacs 编辑模式。如果你的 Bash 不在 emacs 编辑模式，可通过 set -o emacs 设置。<br>^S、^Q、^C、^Z 是由终端设备处理的，可用 stty 命令设置。</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/02/01/aws/">AWS</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-01-31T16:00:00.000Z" itemprop="datePublished">
+    2018-02-01
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/AWS/">AWS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
 <li><p>After create EC2 instance</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 400 /path/my_key_pair.pem</span><br><span class="line">$ ssh -i /path/my_key_pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2018/02/01/aws/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/02/01/Python/">Python</a></h1><div class="post-meta">2018-02-01</div><div class="post-content"><ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 400 /path/my_key_pair.pem</span><br><span class="line">$ ssh -i /path/my_key_pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Transfering file to instance</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp -i /path/my_key_pair.pem /path/SampleFile.txt ec2-user@ec2-198-51-100.1.compute-1.amazonaws.com</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/02/01/Python/">Python</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-01-31T16:00:00.000Z" itemprop="datePublished">
+    2018-02-01
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Python/">Python</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
 <li><p>Python virtual enviroment</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pip install virtual</span><br><span class="line">$ <span class="built_in">cd</span> my_project_folder</span><br><span class="line">$ virtualenv my_project</span><br><span class="line">$ virtual -p /usr/bin/python2.7 my_project</span><br><span class="line">$ <span class="built_in">source</span> my_project/bin/activate</span><br><span class="line">$ deactivate</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2018/02/01/Python/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/01/12/Push notification/">Push notification</a></h1><div class="post-meta">2018-01-12</div><div class="post-content"><h2 id="Remote-push-notification"><a href="#Remote-push-notification" class="headerlink" title="Remote push notification"></a>Remote push notification</h2><ol></div><p class="readmore"><a href="/2018/01/12/Push notification/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/08/22/swift/Swift File/">Summary of file operation</a></h1><div class="post-meta">2017-08-22</div><div class="post-content"><ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pip install virtual</span><br><span class="line">$ <span class="built_in">cd</span> my_project_folder</span><br><span class="line">$ virtualenv my_project</span><br><span class="line">$ virtual -p /usr/bin/python2.7 my_project</span><br><span class="line">$ <span class="built_in">source</span> my_project/bin/activate</span><br><span class="line">$ deactivate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>To activate virtualenv</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ pip install virtualenvwrapper</span><br><span class="line">$ <span class="built_in">export</span> WORKON_HOME=~/Envs</span><br><span class="line">$ <span class="built_in">source</span> /usr/<span class="built_in">local</span>/bin/virtualenvwrapper.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Useful command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkvirtualenv my_project</span><br><span class="line">workon my_project</span><br><span class="line">deactivate</span><br><span class="line">lsvirtualenv</span><br><span class="line">rmvirtualenv</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">export</span> WORKON_HOME=~/Envs</span><br><span class="line">$ <span class="built_in">source</span> /usr/<span class="built_in">local</span>/bin/virtualenvwrapper.sh</span><br><span class="line">$ deactivate</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/" target="_blank" rel="noopener">Reference</a></p>
+<ul>
+<li>Read file with Chinese<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"><span class="keyword">with</span> codecs.open(<span class="string">'areachn.json'</span>, <span class="string">'r'</span>, <span class="string">'utf-8'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    a = json.load(fp)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/01/12/Push notification/">Push notification</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-01-11T16:00:00.000Z" itemprop="datePublished">
+    2018-01-12
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/iOS/">iOS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="Remote-push-notification"><a href="#Remote-push-notification" class="headerlink" title="Remote push notification"></a>Remote push notification</h2><ol>
+<li><p>Request to authorization<br>Add below code to Appdedelegate</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UNUserNotificationCenter</span>.current().delegate = <span class="keyword">self</span></span><br><span class="line"><span class="type">UNUserNotificationCenter</span>.current().requestAuthorization(options: [.alert, .badge, .sound]) &#123; (authorized, error) <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">if</span> authorized &#123;</span><br><span class="line">        <span class="type">DispatchQueue</span>.main.async &#123;</span><br><span class="line">            application.registerForRemoteNotifications()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Add below code to handle notification when app in background</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">userNotificationCenter</span><span class="params">(<span class="number">_</span> center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping <span class="params">(UNNotificationPresentationOptions)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">  completionHandler([.alert, .sound])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/08/22/Swift File/">Summary of file operation</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-08-21T16:00:00.000Z" itemprop="datePublished">
+    2017-08-22
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/iOS/">iOS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
 <li><p>Save array to file</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">saveToFile</span><span class="params">(<span class="number">_</span> sender: Any)</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> filepath = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.documentDirectory, .userDomainMask, <span class="literal">true</span>)[<span class="number">0</span>] <span class="keyword">as</span> <span class="type">NSString</span></span><br><span class="line">    <span class="keyword">let</span> dateformatter = <span class="type">DateFormatter</span>()</span><br><span class="line">    dateformatter.dateFormat = <span class="string">"HH:mm:ss"</span></span><br><span class="line">    <span class="keyword">let</span> filename = dateformatter.string(from: <span class="type">Date</span>()) + <span class="string">".csv"</span></span><br><span class="line">    <span class="keyword">let</span> path = filepath.appendingPathComponent(filename)</span><br><span class="line">    <span class="keyword">let</span> fileurl = <span class="type">URL</span>(fileURLWithPath: path)</span><br><span class="line">    <span class="built_in">print</span> (path)</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> logsToBeSave().write(to: fileurl, atomically: <span class="literal">true</span>, encoding: <span class="type">String</span>.<span class="type">Encoding</span>.utf8)</span><br><span class="line">    &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">        <span class="built_in">print</span> (error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/08/22/swift/Swift File/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/07/28/Parse Server/">Parse Server setup</a></h1><div class="post-meta">2017-07-28</div><div class="post-content"><ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">saveToFile</span><span class="params">(<span class="number">_</span> sender: Any)</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> filepath = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.documentDirectory, .userDomainMask, <span class="literal">true</span>)[<span class="number">0</span>] <span class="keyword">as</span> <span class="type">NSString</span></span><br><span class="line">    <span class="keyword">let</span> dateformatter = <span class="type">DateFormatter</span>()</span><br><span class="line">    dateformatter.dateFormat = <span class="string">"HH:mm:ss"</span></span><br><span class="line">    <span class="keyword">let</span> filename = dateformatter.string(from: <span class="type">Date</span>()) + <span class="string">".csv"</span></span><br><span class="line">    <span class="keyword">let</span> path = filepath.appendingPathComponent(filename)</span><br><span class="line">    <span class="keyword">let</span> fileurl = <span class="type">URL</span>(fileURLWithPath: path)</span><br><span class="line">    <span class="built_in">print</span> (path)</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> logsToBeSave().write(to: fileurl, atomically: <span class="literal">true</span>, encoding: <span class="type">String</span>.<span class="type">Encoding</span>.utf8)</span><br><span class="line">    &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">        <span class="built_in">print</span> (error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Read json data from file</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">readSensorDataFile</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">let</span> filepath = <span class="type">Bundle</span>.main.path(forResource: <span class="string">"sensor"</span>, ofType: <span class="string">"json"</span>)</span><br><span class="line">    <span class="keyword">var</span> data:<span class="type">Data</span>?</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        data = <span class="keyword">try</span> <span class="type">Data</span>(contentsOf: <span class="type">URL</span>(fileURLWithPath: filepath!), options: <span class="type">NSData</span>.<span class="type">ReadingOptions</span>.uncached)</span><br><span class="line">    &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"error when read data file"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> sensorjson = <span class="type">JSON</span>(<span class="type">Data</span>: data!)</span><br><span class="line">    <span class="keyword">for</span> (key, sensortype):(<span class="type">String</span>, <span class="type">JSON</span>) <span class="keyword">in</span> sensorjson &#123;</span><br><span class="line">        <span class="keyword">switch</span> sensortype[<span class="number">0</span>].stringValue &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="type">SensorType</span>.<span class="type">Motion</span>.rawValue:</span><br><span class="line">            allSensors[key] = <span class="type">Sensor</span>(myid: key, gIP: gatewayIP, sType: .<span class="type">Motion</span>)</span><br><span class="line">        <span class="keyword">case</span> <span class="type">SensorType</span>.<span class="type">Magnet</span>.rawValue:</span><br><span class="line">            allSensors[key] =  <span class="type">Sensor</span>(myid: key, gIP: gatewayIP, sType: .<span class="type">Magnet</span>)</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            allSensors[key] = <span class="type">Sensor</span>(myid: key, gIP: gatewayIP, sType: .<span class="type">Switch</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/07/28/Parse Server/">Parse Server setup</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-07-27T16:00:00.000Z" itemprop="datePublished">
+    2017-07-28
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Parse/">Parse</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
 <li><p>Install and Run Parse server locally</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g parse-server mongodb-runner</span><br><span class="line">$ mongo-runner start</span><br><span class="line">$ parse-server --appId APPLICATION_ID --masterKey MASTER_KEY --databaseURI mongodb://loalhost/<span class="built_in">test</span></span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/07/28/Parse Server/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/07/13/swift/Swift summary 3/">Summary of Swift 3</a></h1><div class="post-meta">2017-07-13</div><div class="post-content"><ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g parse-server mongodb-runner</span><br><span class="line">$ mongo-runner start</span><br><span class="line">$ parse-server --appId APPLICATION_ID --masterKey MASTER_KEY --databaseURI mongodb://loalhost/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>To save a object </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST \</span><br><span class="line">-H <span class="string">"X-Parse-Applicaton-Id: APPLICATION_ID"</span> \</span><br><span class="line">-H <span class="string">"Content-Type: applicaton/json"</span> \</span><br><span class="line">-d <span class="string">'&#123;"score:1337,"playerName":"Jiang","cheatMode":false&#125;'</span> \</span><br><span class="line">http://localhost:1337/parse/classes/GameScore</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Retrieve an object</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET \</span><br><span class="line">-H <span class="string">"X-Parse-Application-Id: APPLICATION_ID"</span> \</span><br><span class="line">http://localhost:1337/parse/classes/GameScore</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Install and use Parse dashboard</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g parse-dashboard</span><br><span class="line">parse-dashboard --appId APPLICATION_ID --masterKey MASTER_KEY --serverURL <span class="string">"http://localhost:1337/parse"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Push to Heroku</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'update'</span></span><br><span class="line">git push heroku master</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/07/13/Swift summary 3/">Summary of Swift 3</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-07-12T16:00:00.000Z" itemprop="datePublished">
+    2017-07-13
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/iOS/">iOS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
 <li><p>Random value</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> random = <span class="type">Int</span>(arc4random_uniform(<span class="type">UInt32</span>(mrtStations.<span class="built_in">count</span>)))</span><br><span class="line">astation  = mrtStations[random]</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/07/13/swift/Swift summary 3/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/06/28/Collections/">Summary of collections</a></h1><div class="post-meta">2017-06-28</div><div class="post-content"><ol>
-<li><p>To iterate an array with Struct<br>You cannot change property of struct in loop. During the loop, you are operate the copy of the struct. Old loop method should be used for it. </p></div><p class="readmore"><a href="/2017/06/28/Collections/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/06/08/git/">Git Command list</a></h1><div class="post-meta">2017-06-08</div><div class="post-content"><ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> random = <span class="type">Int</span>(arc4random_uniform(<span class="type">UInt32</span>(mrtStations.<span class="built_in">count</span>)))</span><br><span class="line">astation  = mrtStations[random]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Remove alphabet from string</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a1 = <span class="type">Int</span>(b1.trimmingCharacters(<span class="keyword">in</span>: <span class="type">CharacterSet</span>(charactersIn: <span class="string">"01234567890."</span>).inverted))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Check seconds from today midnight</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> t = <span class="type">Calendar</span>.current.startOfDay(<span class="keyword">for</span>: <span class="type">Date</span>())</span><br><span class="line"><span class="keyword">let</span> d = <span class="type">Date</span>()</span><br><span class="line"><span class="keyword">let</span> e = <span class="type">Int</span>(d.timeIntervalSince(t))</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/06/28/Collections/">Summary of collections</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-06-27T16:00:00.000Z" itemprop="datePublished">
+    2017-06-28
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/iOS/">iOS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
+<li><p>To iterate an array with Struct<br>You cannot change property of struct in loop. During the loop, you are operate the copy of the struct. Old loop method should be used for it. </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">0</span>..&lt;nearbyTrolleys.<span class="built_in">count</span> &#123;</span><br><span class="line">    nearbyTrolleys[index].<span class="built_in">distance</span> = nearbyTrolleys[index].location.<span class="built_in">distance</span>(from: currentlocation)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Check item exist in array</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b:[<span class="type">String</span>] = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>]****</span><br><span class="line">b.<span class="built_in">contains</span>(<span class="string">"a"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Filter item in array</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> a3 = a.<span class="built_in">filter</span>&#123;$<span class="number">0</span> == <span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(a3)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Sort array</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> d = a.sorted(by: &gt;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Map </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a4 = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</span><br><span class="line"><span class="keyword">let</span> b4 = a4.<span class="built_in">map</span> &#123; (item:<span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">return</span> item * <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Reduce</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> status = [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">true</span>]</span><br><span class="line"><span class="keyword">var</span> s1 = status.<span class="built_in">reduce</span>(<span class="literal">true</span>) &#123; (r, s) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></span><br><span class="line">  <span class="keyword">return</span> r &amp;&amp; s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/06/08/git/">Git Command list</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-06-07T16:00:00.000Z" itemprop="datePublished">
+    2017-06-08
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Git/">Git</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
 <li><p>Local command</p>
 <ul>
 <li><p>Reverting Working Copy to Most Recent Commit<br>To revert to previous commit, ignoring any changes:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard HEAD</span></span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/06/08/git/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/05/13/swift/Swift summary 2/">Summary of Swift 2</a></h1><div class="post-meta">2017-05-13</div><div class="post-content"><ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard HEAD</span></span><br></pre></td></tr></table></figure>
+<p>where HEAD is the last commit in your current branch</p>
+</li>
+<li>Reverting Working Copy to an Older Commit. To revert to a commit that’s older than the most recent commit:</li>
+<li><p>Resets index to former commit; replace ‘56e05fced’ with your commit code</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset <span class="number">56e05f</span>ced</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Moves pointer back to previous HEAD</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--soft HEAD@&#123;1&#125;</span></span><br><span class="line">git <span class="keyword">commit</span> -m <span class="string">"Revert to 56e05fced"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Updates working copy to reflect the new commit</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Switch to previous version<br>Revert back to previous version:<br>Don’t forget the . in the end.</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout [reversion] .</span><br></pre></td></tr></table></figure>
+<p>Revert back to master version:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard;</span></span><br></pre></td></tr></table></figure>
+<p>Remove cached file from repo (Not from local file)</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm <span class="comment">--cached fileToBeRemoved</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Remote command</p>
+<ul>
+<li><p>SSH key (required for remote access)<br><a href="https://help.github.com/articles/checking-for-existing-ssh-keys/" target="_blank" rel="noopener">Check SSH exist</a><br><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#adding-your-ssh-key-to-the-ssh-agent" target="_blank" rel="noopener">Add SSH key to GITHUB account</a></p>
+</li>
+<li><p>Add remote source<br>Setup a new remote</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="built_in">add</span> origin http<span class="variable">s:</span>//github.<span class="keyword">com</span>/user/repo.git</span><br></pre></td></tr></table></figure>
+<p>Verify new remote</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git remote -v</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> origin  https://github.com/user/repo.git (fetch)</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> origin  https://github.com/user/repo.git (push)</span></span><br></pre></td></tr></table></figure>
+<p>Push to remote </p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">push</span> <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure>
+<p>Pull from remote</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git pull</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Add existing project to remote</p>
+<ol>
+<li>Create repository on the github</li>
+<li>Commit existing project<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span><span class="bash"> origin urlofgithub</span></span><br><span class="line"><span class="bash">git push -u origin master</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Git Branch</p>
+<ul>
+<li><p>Create branch and switch to it</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="selector-tag">b</span> newbranchname</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>After add/commit on the branch, need to switch back to master and merge them</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="literal">master</span></span><br><span class="line">git merge newbranchname</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Delete branch</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-d <span class="keyword">branchname</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Merge master to branch</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> checkout <span class="keyword">branchname</span></span><br><span class="line"><span class="keyword">git </span>rebase master</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/05/13/Swift summary 2/">Summary of Swift 2</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-05-12T16:00:00.000Z" itemprop="datePublished">
+    2017-05-13
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/iOS/">iOS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
 <li><a href="#UISwitch">UISwitch</a>: UISwitch usage</li>
 <li><a href="#Animation">Animation</a>: Animation usage</li>
-<li><a href="#ArrayRemove">Array remove item</a>: Remove item from Array</li></div><p class="readmore"><a href="/2017/05/13/swift/Swift summary 2/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/30/Convert/">All about convert</a></h1><div class="post-meta">2017-04-30</div><div class="post-content"><ol>
+<li><a href="#ArrayRemove">Array remove item</a>: Remove item from Array</li>
+<li><a href="#AlertController">Add UIAlertcontroller on iPad</a>: Add alertcontroller on iPad</li>
+<li><a href="#NSPredicate">NSPredicate</a>: How to use NSPredicate</li>
+<li><a href="#Motiondetect">Motiondetect</a>: How to detect motion in viewcontroller</li>
+<li><a href="#Playsound">Playsound</a>: Play system sound</li>
+<li><a href="#gradientcolor">Add gradient color</a>: Add gradient color to view controller</li>
+<li><a href="#userdefault">User default</a>: Read/Write userdefault settings</li>
+<li><a href="#system notification">System notification</a>: How to oberserve system notification</li>
+</ol>
+<ol>
+<li><a name="UISwitch"></a> <strong>UISwitch usage</strong></li>
+</ol>
+<ul>
+<li>Toggle UISwitch status<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">toggleAlarm</span><span class="params">(<span class="number">_</span> sender:AnyObject)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> alarmSwitch.isOn &#123;</span><br><span class="line">        mute = <span class="literal">false</span></span><br><span class="line">        alarmSwitch.setOn(mute, animated: <span class="literal">true</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        mute = <span class="literal">true</span></span><br><span class="line">        alarmSwitch.setOn(mute, animated: <span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><p><a name="Animation"></a> <strong>Animation usage</strong></p>
+<ul>
+<li>Simple blink animation.<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span> isBlink &#123;</span><br><span class="line">    cell.textLabel?.textColor = <span class="type">UIColor</span>.red</span><br><span class="line">    <span class="type">UIView</span>.animate(withDuration: <span class="number">1.0</span>, delay: <span class="number">0.0</span>, options: [.allowUserInteraction, .<span class="keyword">repeat</span>], animations: &#123;</span><br><span class="line">        cell.textLabel?.alpha = <span class="number">0.5</span></span><br><span class="line">    &#125;, completion: &#123; (finished:<span class="type">Bool</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="type">UIView</span>.animate(withDuration: <span class="number">0.1</span>, delay: <span class="number">0.0</span>, options: [.allowUserInteraction], animations: &#123; </span><br><span class="line">        cell.textLabel?.alpha = <span class="number">1.0</span></span><br><span class="line">    &#125;, completion: &#123; (finished:<span class="type">Bool</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">    &#125;)</span><br><span class="line">    cell.textLabel?.textColor = <span class="type">UIColor</span>.white</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="ArrayRemove"></a> <strong>Remove an item from array</strong></p>
+<ul>
+<li>Remove a string from string array.<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blinkSensorName = <span class="type">Array</span>(blinkSensorName.<span class="built_in">filter</span>() &#123;$<span class="number">0</span> != sName&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="AlertController"></a> <strong>Add UIAlertController on ipad navigation bar button</strong></p>
+<ul>
+<li>After add barbutton item on navigation bar.<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">menu</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> alertcontroller = <span class="type">UIAlertController</span>(title: <span class="string">"Menu"</span>, message: <span class="string">"Select"</span>, preferredStyle: .actionSheet)</span><br><span class="line">    <span class="keyword">let</span> startAction = <span class="type">UIAlertAction</span>(title: startstop, style: .<span class="keyword">default</span>) &#123; (<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"Start button in Menu"</span>)</span><br><span class="line">        <span class="keyword">self</span>.startComm(<span class="string">"a"</span> <span class="keyword">as</span> <span class="type">AnyObject</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> cancelaction = <span class="type">UIAlertAction</span>(title: <span class="string">"Cancel"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>)</span><br><span class="line">    alertcontroller.addAction(startAction)</span><br><span class="line">    alertcontroller.addAction(cancelaction)</span><br><span class="line">    alertcontroller.popoverPresentationController?.barButtonItem = <span class="keyword">self</span>.navigationItem.rightBarButtonItem</span><br><span class="line">    present(alertcontroller, animated: <span class="literal">false</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="NSPredicate"></a> <strong>Simple example on how to use NSPredicate</strong></p>
+<ul>
+<li>Query record from Realm database.<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> dateformatter = <span class="type">DateFormatter</span>()</span><br><span class="line"><span class="keyword">let</span> dtstring = <span class="string">"2017-06-08 19:00:00"</span></span><br><span class="line">dateformatter.dateFormat = <span class="string">"YYYY-MM-dd HH:mm:ss"</span></span><br><span class="line"><span class="keyword">let</span> dt:<span class="type">Date</span> = dateformatter.date(from:dtstring)!</span><br><span class="line"><span class="keyword">let</span> ht = <span class="string">"heartbeat"</span></span><br><span class="line"><span class="keyword">let</span> predicate = <span class="type">NSPredicate</span>(format: <span class="string">"timestamp &gt;= %@ AND status != %@"</span>, dt <span class="keyword">as</span> <span class="type">CVarArg</span>, ht <span class="keyword">as</span> <span class="type">CVarArg</span>)</span><br><span class="line"><span class="keyword">let</span> queryrecord = realm.objects(record.<span class="keyword">self</span>).<span class="built_in">filter</span>(predicate)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="Motiondetect"></a> <strong>Detect motion in viewcontroller</strong></p>
+<ul>
+<li>Override func in viewcontroller.<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">motionEnded</span><span class="params">(motion: UIEventSubtype, withEvent event: UIEvent?)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> motion == .<span class="type">MotionShake</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.saveThisSong()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="Playsound"></a> <strong>Play system sound</strong></p>
+<ul>
+<li>Play system sound once.<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> systemSoudID:<span class="type">SystemSoundID</span> = <span class="number">1016</span></span><br><span class="line"><span class="type">AudioServicesPlaySystemSound</span>(systemSoudID)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="gradientcolor"></a> <strong> Gradient color to view controller</strong></p>
+<ul>
+<li>Add gradient color to background<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> gradient = <span class="type">CAGradientLayer</span>()</span><br><span class="line">gradient.frame = <span class="keyword">self</span>.view.bounds</span><br><span class="line">gradient.colors = [<span class="type">UIColor</span>.blue.cgColor, <span class="type">UIColor</span>.green.cgColor]</span><br><span class="line"><span class="keyword">self</span>.view.layer.insertSublayer(gradient, at: <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="userdefault"></a> <strong> Read and write user default setting</strong></p>
+<ul>
+<li>Read and write user default<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> defaults = <span class="type">UserDefaults</span>.standard</span><br><span class="line">defaults.<span class="keyword">set</span>(owner, forKey: <span class="type">RecordField</span>.owner.rawValue)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> defaults = <span class="type">UserDefaults</span>.standard</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> o = defaults.string(forKey: <span class="type">RecordField</span>.owner.rawValue) &#123;</span><br><span class="line">    <span class="built_in">print</span> (o)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="system notification"></a> <strong> How to use system notification </strong></p>
+<ul>
+<li><p>Add and post notification</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> busstopNotification = <span class="type">Notification</span>.<span class="type">Name</span>(<span class="string">"busStopNotification"</span>)</span><br><span class="line"><span class="keyword">let</span> notifydict = [<span class="string">"number"</span>: <span class="keyword">self</span>.number]</span><br><span class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.post(name: busstopNotification, object: <span class="literal">nil</span>, userInfo: notifydict)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Observe the notification</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, selector: #selector(updateSchedule), name: busstopNotification, object: <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">updateSchedule</span><span class="params">(notification: NSNotification)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> n = notification.userInfo?[<span class="string">"number"</span>] <span class="keyword">as</span>? <span class="type">String</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">deinit</span> &#123;</span><br><span class="line">    <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.removeObserver(<span class="keyword">self</span>, name: <span class="type">NSNotification</span>.<span class="type">Name</span>(rawValue: <span class="string">"UIApplicationDidBecomeActiveNotification"</span>), object: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/04/30/Convert/">All about convert</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-04-29T16:00:00.000Z" itemprop="datePublished">
+    2017-04-30
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/iOS/">iOS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
 <li><p>Convert Date to String</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> msg = <span class="string">""</span></span><br><span class="line"><span class="keyword">let</span> dateformatter = <span class="type">DateFormatter</span>()</span><br><span class="line">dateformatter.dateFormat = <span class="string">"HH:mm:ss"</span></span><br><span class="line">msg = msg + dateformatter.string(from: timestamp)</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/04/30/Convert/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/08/Cloudkit Usage/">iOS Cloudkit Usage in Swift</a></h1><div class="post-meta">2017-04-08</div><div class="post-content"><ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> msg = <span class="string">""</span></span><br><span class="line"><span class="keyword">let</span> dateformatter = <span class="type">DateFormatter</span>()</span><br><span class="line">dateformatter.dateFormat = <span class="string">"HH:mm:ss"</span></span><br><span class="line">msg = msg + dateformatter.string(from: timestamp)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Convert time difference to String</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ct = <span class="type">Date</span>()</span><br><span class="line"><span class="keyword">var</span> ts = <span class="string">""</span></span><br><span class="line"><span class="keyword">var</span> ms = <span class="string">""</span></span><br><span class="line"><span class="keyword">var</span> ss = <span class="string">""</span></span><br><span class="line"><span class="keyword">if</span> a.alarmStatus &#123;</span><br><span class="line">    <span class="keyword">let</span> components = <span class="type">Calendar</span>.current.dateComponents([.minute, .second], from: a.alarmtimestamp, to: ct)</span><br><span class="line">    ms = <span class="string">"<span class="subst">\(components.minute ?? <span class="number">0</span>)</span>:"</span></span><br><span class="line">    ss = <span class="string">"<span class="subst">\(components.second ?? <span class="number">0</span>)</span>"</span></span><br><span class="line">    ts = ms + ss</span><br><span class="line">&#125;</span><br><span class="line">cell.bedLabel.text = ts</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/04/08/Cloudkit Usage/">iOS Cloudkit Usage in Swift</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-04-07T16:00:00.000Z" itemprop="datePublished">
+    2017-04-08
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/iOS/">iOS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
 <li><p><strong>To query a record by distance</strong></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nearbyTrolleys:[trolley]=[]</span><br><span class="line"><span class="keyword">let</span> <span class="built_in">distance</span> = <span class="number">3000.0</span></span><br><span class="line"><span class="keyword">let</span> locationPredicate = <span class="type">NSPredicate</span>(format: <span class="string">"distanceToLocation:fromLocation:(%K, %@) &lt; %f"</span>, <span class="string">"location"</span>, currentlocation, <span class="built_in">distance</span>)</span><br><span class="line"><span class="keyword">let</span> date = <span class="type">Date</span>(timeInterval: -<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">7</span>, since: <span class="type">Date</span>())</span><br><span class="line"><span class="keyword">let</span> timePredicate = <span class="type">NSPredicate</span>(format: <span class="string">"%K &gt; %@"</span>, <span class="type">RecordField</span>.creationDate.rawValue, date <span class="keyword">as</span> <span class="type">CVarArg</span>)</span><br><span class="line"><span class="keyword">let</span> statusPredicate = <span class="type">NSPredicate</span>(format: <span class="string">"%K = 0"</span>, <span class="type">RecordField</span>.status.rawValue)</span><br><span class="line"><span class="keyword">let</span> compoundPredicate = <span class="type">NSCompoundPredicate</span>(type: .and, subpredicates: [timePredicate, locationPredicate, statusPredicate])</span><br><span class="line"><span class="keyword">let</span> query = <span class="type">CKQuery</span>(recordType: <span class="string">"trolley"</span>, predicate: compoundPredicate)</span><br><span class="line"><span class="keyword">let</span> operation = <span class="type">CKQueryOperation</span>(query: query)</span><br><span class="line">operation.resultsLimit = <span class="number">50</span></span><br><span class="line">operation.desiredKeys = [<span class="type">RecordField</span>.address.rawValue, <span class="type">RecordField</span>.owner.rawValue, <span class="type">RecordField</span>.creationDate.rawValue, <span class="type">RecordField</span>.recordName.rawValue, <span class="type">RecordField</span>.location.rawValue, <span class="type">RecordField</span>.status.rawValue]</span><br><span class="line"></span><br><span class="line">operation.recordFetchedBlock = &#123;(record:<span class="type">CKRecord</span>) <span class="keyword">in</span></span><br><span class="line">    nearbyTrolleys.append(<span class="keyword">self</span>.recordToTrolley(arecord: record, currentlocation: currentlocation))</span><br><span class="line">&#125;</span><br><span class="line">operation.queryCompletionBlock = &#123;(<span class="number">_</span>, error) <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"retrieve nearby trolley successful <span class="subst">\(nearbyTrolleys.<span class="built_in">count</span>)</span>."</span>)</span><br><span class="line">        completion(<span class="literal">true</span>, nearbyTrolleys)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">print</span> (error)</span><br><span class="line">        completion(<span class="literal">false</span>, nearbyTrolleys)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">publicdatabase.add(operation)</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/04/08/Cloudkit Usage/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/03/30/Hexo command/">Hexo Command list</a></h1><div class="post-meta">2017-03-30</div><div class="post-content"><ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nearbyTrolleys:[trolley]=[]</span><br><span class="line"><span class="keyword">let</span> <span class="built_in">distance</span> = <span class="number">3000.0</span></span><br><span class="line"><span class="keyword">let</span> locationPredicate = <span class="type">NSPredicate</span>(format: <span class="string">"distanceToLocation:fromLocation:(%K, %@) &lt; %f"</span>, <span class="string">"location"</span>, currentlocation, <span class="built_in">distance</span>)</span><br><span class="line"><span class="keyword">let</span> date = <span class="type">Date</span>(timeInterval: -<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">7</span>, since: <span class="type">Date</span>())</span><br><span class="line"><span class="keyword">let</span> timePredicate = <span class="type">NSPredicate</span>(format: <span class="string">"%K &gt; %@"</span>, <span class="type">RecordField</span>.creationDate.rawValue, date <span class="keyword">as</span> <span class="type">CVarArg</span>)</span><br><span class="line"><span class="keyword">let</span> statusPredicate = <span class="type">NSPredicate</span>(format: <span class="string">"%K = 0"</span>, <span class="type">RecordField</span>.status.rawValue)</span><br><span class="line"><span class="keyword">let</span> compoundPredicate = <span class="type">NSCompoundPredicate</span>(type: .and, subpredicates: [timePredicate, locationPredicate, statusPredicate])</span><br><span class="line"><span class="keyword">let</span> query = <span class="type">CKQuery</span>(recordType: <span class="string">"trolley"</span>, predicate: compoundPredicate)</span><br><span class="line"><span class="keyword">let</span> operation = <span class="type">CKQueryOperation</span>(query: query)</span><br><span class="line">operation.resultsLimit = <span class="number">50</span></span><br><span class="line">operation.desiredKeys = [<span class="type">RecordField</span>.address.rawValue, <span class="type">RecordField</span>.owner.rawValue, <span class="type">RecordField</span>.creationDate.rawValue, <span class="type">RecordField</span>.recordName.rawValue, <span class="type">RecordField</span>.location.rawValue, <span class="type">RecordField</span>.status.rawValue]</span><br><span class="line"></span><br><span class="line">operation.recordFetchedBlock = &#123;(record:<span class="type">CKRecord</span>) <span class="keyword">in</span></span><br><span class="line">    nearbyTrolleys.append(<span class="keyword">self</span>.recordToTrolley(arecord: record, currentlocation: currentlocation))</span><br><span class="line">&#125;</span><br><span class="line">operation.queryCompletionBlock = &#123;(<span class="number">_</span>, error) <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"retrieve nearby trolley successful <span class="subst">\(nearbyTrolleys.<span class="built_in">count</span>)</span>."</span>)</span><br><span class="line">        completion(<span class="literal">true</span>, nearbyTrolleys)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">print</span> (error)</span><br><span class="line">        completion(<span class="literal">false</span>, nearbyTrolleys)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">publicdatabase.add(operation)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Save image to local file</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">saveImageLocally</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> imageData: <span class="type">Data</span> = <span class="type">UIImageJPEGRepresentation</span>(noteImage.image!, <span class="number">0.8</span>)!</span><br><span class="line">    <span class="keyword">let</span> imageDirectoryPath = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.documentDirectory, .userDomainMask, <span class="literal">true</span>)[<span class="number">0</span>] <span class="keyword">as</span> <span class="type">NSString</span></span><br><span class="line">    <span class="keyword">let</span> imagename = <span class="string">"temp_image.jpg"</span></span><br><span class="line">    <span class="keyword">let</span> path = imageDirectoryPath.appendingPathComponent(imagename)</span><br><span class="line">    imageURL = <span class="type">URL</span>(fileURLWithPath: path)</span><br><span class="line">    <span class="keyword">try</span>? imageData.write(to: imageURL, options: [.atomic])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/03/30/Hexo command/">Hexo Command list</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-03-29T16:00:00.000Z" itemprop="datePublished">
+    2017-03-30
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Hexo/">Hexo</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
 <li><p>Test blog locally</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> s</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/03/30/Hexo command/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/03/20/UITableViewController/">Summary of UITableViewController</a></h1><div class="post-meta">2017-03-20</div><div class="post-content"><p>Basic usage<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span>: <span class="title">UITableViewDelegate</span>, <span class="title">UITableViewDataSource</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> messages.<span class="built_in">count</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">numberOfSections</span><span class="params">(<span class="keyword">in</span> tableView: UITableView)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> cell=tableView.dequeueReusableCell(withIdentifier: <span class="string">"message"</span>, <span class="keyword">for</span>: indexPath)</span><br><span class="line">      cell.textLabel?.text = messages[indexPath.row]</span><br><span class="line">      <span class="keyword">return</span> cell</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2017/03/20/UITableViewController/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/03/19/iOS CallKitManager Usage/">iOS CallKitManger Usage in Swift</a></h1><div class="post-meta">2017-03-19</div><div class="post-content"><ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Publish blog</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="http://www.jianshu.com/p/4eaddcbe4d12" target="_blank" rel="noopener">Reference</a></p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/03/20/UITableViewController/">Summary of UITableViewController</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-03-19T16:00:00.000Z" itemprop="datePublished">
+    2017-03-20
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/iOS/">iOS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>Basic usage<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span>: <span class="title">UITableViewDelegate</span>, <span class="title">UITableViewDataSource</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> messages.<span class="built_in">count</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">numberOfSections</span><span class="params">(<span class="keyword">in</span> tableView: UITableView)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> cell=tableView.dequeueReusableCell(withIdentifier: <span class="string">"message"</span>, <span class="keyword">for</span>: indexPath)</span><br><span class="line">      cell.textLabel?.text = messages[indexPath.row]</span><br><span class="line">      <span class="keyword">return</span> cell</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>Select cell and send data to next viewcontroller</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> vc = <span class="keyword">self</span>.storyboard?.instantiateViewControllerWithIdentifier(<span class="string">"studentDetailViewController"</span>) <span class="keyword">as</span>? studentDetailViewController</span><br><span class="line">vc?.newStudent = <span class="literal">false</span></span><br><span class="line">vc?.currentStudent = <span class="type">DataManager</span>.copyStudent(<span class="type">Students</span>[indexPath.row])</span><br><span class="line"><span class="keyword">self</span>.navigationController?.pushViewController(vc!, animated: <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Select cell and prepare to segue</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepare</span><span class="params">(<span class="keyword">for</span> segue: UIStoryboardSegue, sender: Any?)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> segue.identifier == <span class="string">"showdetail"</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> vc = segue.destination <span class="keyword">as</span>! detailViewController</span><br><span class="line">        vc.index = (bedCollectionView.indexPathsForSelectedItems?[<span class="number">0</span>].row)!</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Use custom cell in tableview controller</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) <span class="keyword">as</span>! checkListCollectionViewCell</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Delete row from tableview controller. Update UIView in other queue. Update tableview by use tableview.deleteRowAtIndexpath</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">savedSongViewController</span>:<span class="title">UITableViewDelegate</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(savedSongTable: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(savedSongTable: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)</span></span> &#123;</span><br><span class="line">      <span class="keyword">if</span> editingStyle == .<span class="type">Delete</span> &#123;</span><br><span class="line">          <span class="keyword">self</span>.allSavedSongs.removeAtIndex(indexPath.row)</span><br><span class="line">          <span class="keyword">self</span>.savedSongs?.favoriteTracks.removeAtIndex(indexPath.row)</span><br><span class="line">          <span class="keyword">self</span>.savedSongs?.saveAllSongs()</span><br><span class="line">          <span class="keyword">var</span> selectIndex = [<span class="type">NSIndexPath</span>]()</span><br><span class="line">          selectIndex.append(indexPath)</span><br><span class="line">          savedSongTable.deleteRowsAtIndexPaths(selectIndex, withRowAnimation: <span class="type">UITableViewRowAnimation</span>.<span class="type">Fade</span>)</span><br><span class="line">          dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">              <span class="keyword">self</span>.savedSongTable?.reloadData()</span><br><span class="line">          &#125;)            </span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Detect button/image was tapped in a cell (use protocol)<br><a href="http://candycode.io/how-to-properly-do-buttons-in-table-view-cells/" target="_blank" rel="noopener">Link</a></p>
+</li>
+<li><p>Click a cell and popup alertcontroller</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">collectionView</span><span class="params">(<span class="number">_</span> collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> i = indexPath.row</span><br><span class="line">    <span class="built_in">print</span> (<span class="string">"<span class="subst">\(i)</span>"</span>)</span><br><span class="line">    <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="string">"Bed"</span>, message: <span class="string">"Select"</span>, preferredStyle: .actionSheet)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> selectAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Detail"</span>, style: .<span class="keyword">default</span>) &#123; (<span class="number">_</span>) <span class="keyword">in</span></span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"show detail"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> cancelAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Cancel"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>)</span><br><span class="line">    alertController.addAction(selectAction)</span><br><span class="line">    alertController.addAction(cancelAction)</span><br><span class="line">    <span class="keyword">let</span> popOver = alertController.popoverPresentationController</span><br><span class="line">    popOver?.sourceView = collectionView.cellForItem(at: indexPath)</span><br><span class="line">    popOver?.sourceRect = collectionView.cellForItem(at: indexPath)!.bounds</span><br><span class="line">    popOver?.permittedArrowDirections = <span class="type">UIPopoverArrowDirection</span>.any</span><br><span class="line">    </span><br><span class="line">    present(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>UITableView cell auto height</p>
+<ul>
+<li>Add constrains in the cell’s view</li>
+<li>Add below code in the viewcontroller <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.tableView.rowHeight = <span class="type">UITableViewAutomaticDimension</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="number">140</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Reload one cell in the tableview</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ip = <span class="type">NSIndexPath</span>(row: row, section: <span class="number">0</span>)</span><br><span class="line"><span class="keyword">self</span>.tableView.reloadRows(at: [ip <span class="keyword">as</span> <span class="type">IndexPath</span>], with: .top)</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/03/19/iOS CallKitManager Usage/">iOS CallKitManger Usage in Swift</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-03-18T16:00:00.000Z" itemprop="datePublished">
+    2017-03-19
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/iOS/">iOS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
 <li><p><strong>Add below line in the head</strong></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> CallKit</span><br><span class="line"><span class="keyword">let</span> extensionIdentifier:<span class="type">String</span> = <span class="string">"Your extension identifier"</span></span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/03/19/iOS CallKitManager Usage/">Read More</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/03/19/swift/Swift summary 1/">Summary of Swift 1</a></h1><div class="post-meta">2017-03-19</div><div class="post-content"><ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> CallKit</span><br><span class="line"><span class="keyword">let</span> extensionIdentifier:<span class="type">String</span> = <span class="string">"Your extension identifier"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>To check the enable status of extension</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkEnableStatus</span><span class="params">()</span></span> &#123;</span><br><span class="line">      <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</span><br><span class="line">      globalQueue.async &#123;</span><br><span class="line">          <span class="keyword">self</span>.callmanager.getEnabledStatusForExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(enablestatus: <span class="type">CXCallDirectoryManager</span>.<span class="type">EnabledStatus</span>, error:<span class="type">Error</span>?) <span class="keyword">in</span></span><br><span class="line">              <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</span><br><span class="line">                  <span class="keyword">switch</span> enablestatus &#123;</span><br><span class="line">                  <span class="keyword">case</span> .disabled:</span><br><span class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></span><br><span class="line">                  <span class="keyword">case</span> .enabled:</span><br><span class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">true</span></span><br><span class="line">                  <span class="keyword">case</span> .unknown:</span><br><span class="line">                      <span class="keyword">self</span>.enableStatus = <span class="literal">false</span></span><br><span class="line">                  &#125;</span><br><span class="line">                  <span class="keyword">self</span>.delegate?.didUpdateEnableStatus(status: <span class="keyword">self</span>.enableStatus)</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>To reload phone data of extension</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">reloadData</span><span class="params">()</span></span> &#123;</span><br><span class="line">      <span class="keyword">let</span> globalQueue = <span class="type">DispatchQueue</span>.global()</span><br><span class="line">      globalQueue.async &#123;</span><br><span class="line">          <span class="keyword">self</span>.callmanager.reloadExtension(withIdentifier: extensionIdentifier, completionHandler: &#123;(error:<span class="type">Error</span>?) <span class="keyword">in</span></span><br><span class="line">              <span class="keyword">var</span> status:<span class="type">Bool</span> = <span class="literal">false</span></span><br><span class="line">              <span class="keyword">if</span> error == <span class="literal">nil</span> &#123;</span><br><span class="line">                  status = <span class="literal">true</span></span><br><span class="line">                  <span class="built_in">print</span> (<span class="string">"load phone number data successful."</span>)</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                  <span class="built_in">print</span> (<span class="string">"error when reload phone data."</span>)</span><br><span class="line"><span class="comment">//                    print (error?.localizedDescription)</span></span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">self</span>.delegate?.didReloadPhoneData(status: status)</span><br><span class="line">          &#125;)</span><br><span class="line">          </span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/03/19/Swift summary 1/">Summary of Swift 1</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2017-03-18T16:00:00.000Z" itemprop="datePublished">
+    2017-03-19
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/iOS/">iOS</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ol>
 <li><a href="#UIButton usage">UIButton</a>: To add action to UIButton</li>
-<li><a href="#Singleton">Singleton class</a>: How to create and use Singleton class</li></div><p class="readmore"><a href="/2017/03/19/swift/Swift summary 1/">Read More</a></p></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Parse/" style="font-size: 15px;">Parse</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/AWS/" style="font-size: 15px;">AWS</a> <a href="/tags/BASH/" style="font-size: 15px;">BASH</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/10/03/flask/">Deploy Flask server</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/01/SystemTools/">Development enviroment setup</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/Core location/">iOS Core Location in Swift</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/18/bash command/">BASH command</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/01/aws/">AWS</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/01/Python/">Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/12/Push notification/">Push notification</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/22/swift/Swift File/">Summary of file operation</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/Parse Server/">Parse Server setup</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/swift/Swift summary 3/">Summary of Swift 3</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">JIANG NAN's BLOG.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<li><a href="#Singleton">Singleton class</a>: How to create and use Singleton class</li>
+<li><a href="#Navigationbar">Navigation bar</a>: Navigation bar usage</li>
+<li><a href="#Alertcontroller">Alert Controller</a>: Alertcontroller usage</li>
+<li><a href="#rateapp">Rate Apps in Appstore</a>: Rate App in Appstore</li>
+<li><a href="#selectphoto">Select photo from album</a>: Select photo from album</li>
+<li><a href="#dispatch">Background dispatch</a>: Background dispatch queues</li>
+<li><a href="#notification">Notification</a>: Notification</li>
+<li><a href="#pushviewcontroller">PushViewController</a>: Push viewController</li>
+<li><a href="#presentviewcontroller">PresentViewController</a>: Present viewController</li>
+<li><a href="#timerTask">RunTaskbyTimer</a>: To start a timer task</li>
+<li><a href="#checkiteminarray">Check item in Array</a>: To check an item exist in Array</li>
+</ol>
+<ol>
+<li>UIButton<ul>
+<li>Add target to UIButton.<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">button.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">MyClass</span>.buttonTapped),</span><br><span class="line">                forControlEvents: .<span class="type">TouchUpInside</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Add bar button and its action.<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> barbutton = <span class="type">UIBarButtonItem</span>(title: <span class="string">"save"</span>, style: <span class="type">UIBarButtonItemStyle</span>.<span class="type">Plain</span>, </span><br><span class="line">    target: <span class="keyword">self</span>, action: #selector(saveAlbum))</span><br><span class="line"><span class="keyword">self</span>.navigationItem.rightBarButtonItem = barbutton</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><p><a name="Singleton"></a> <strong>Singleton class usage</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">currentUserInfo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">let</span> sharedCurrentUserInstance = currentUserInfo()</span><br><span class="line">    <span class="keyword">var</span> userRealName = <span class="string">""</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">init</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = currentUserInfo.sharedCurrentUserInstance.userRealName</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a name="Navigationbar"></a> <strong>Navigation bar usage</strong></p>
+<ul>
+<li>Add bar button and its action<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> barbutton = <span class="type">UIBarButtonItem</span>(title: <span class="string">"save"</span>, style: <span class="type">UIBarButtonItemStyle</span>.<span class="type">Plain</span>, </span><br><span class="line">target: <span class="keyword">self</span>, action: #selector(saveAlbum))</span><br><span class="line"><span class="keyword">self</span>.navigationItem.rightBarButtonItem = barbutton</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><a name="Alertcontroller"></a> <strong>Alert controller usage</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reportSpamMail</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="string">"Report"</span>, message: <span class="string">"Report spam number"</span>, preferredStyle: .alert)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> sendAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Report"</span>, style: .<span class="keyword">default</span>, handler: &#123;(<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">let</span> receipients = [<span class="keyword">self</span>.mailAddress]</span><br><span class="line">        <span class="keyword">let</span> subject = <span class="string">"From sgCallerID"</span></span><br><span class="line">        <span class="keyword">let</span> messagebody = <span class="string">""</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> mailVC = <span class="keyword">self</span>.configureMail(receipients: receipients, subject: subject, messageBody: messagebody)</span><br><span class="line">        <span class="keyword">if</span> <span class="type">MFMailComposeViewController</span>.canSendMail() &#123;</span><br><span class="line">            <span class="keyword">self</span>.present(mailVC, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> cancelAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Cancel"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>)</span><br><span class="line">    alertController.addAction(sendAction)</span><br><span class="line">    alertController.addAction(cancelAction)</span><br><span class="line">    </span><br><span class="line">    present(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a name="rateapp"></a> Rate app<br>To rate the apps in the Appstore</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">rateApp</span><span class="params">(appId:String, completion: @escaping <span class="params">(<span class="params">(<span class="number">_</span> success: Bool)</span></span></span></span> -&gt;())) &#123;</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> url = <span class="type">URL</span>(string: <span class="string">"itms-apps://itunes.apple.com/app/"</span> + appId) <span class="keyword">else</span> &#123;</span><br><span class="line">        completion(<span class="literal">false</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">guard</span> #available(iOS <span class="number">10</span>, *) <span class="keyword">else</span> &#123;</span><br><span class="line">        completion(<span class="type">UIApplication</span>.shared.openURL(url))</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">UIApplication</span>.shared.<span class="keyword">open</span>(url, options: [:], completionHandler: completion)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a name="selectphoto"></a> <strong>Select photo from libary</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">addPhoto</span><span class="params">()</span></span> &#123;</span><br><span class="line">    imagePicker.allowsEditing = <span class="literal">false</span></span><br><span class="line">    imagePicker.sourceType = .<span class="type">PhotoLibrary</span></span><br><span class="line">    imagePicker.delegate = <span class="keyword">self</span></span><br><span class="line">    presentViewController(imagePicker, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">addPhotoViewController</span>:<span class="title">UIImagePickerControllerDelegate</span>,<span class="title">UINavigationControllerDelegate</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">imagePickerController</span><span class="params">(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.selectPhoto[<span class="keyword">self</span>.selectPhotoIndex] = image</span><br><span class="line">        <span class="keyword">self</span>.photoStatus[<span class="keyword">self</span>.selectPhotoIndex] = <span class="literal">true</span></span><br><span class="line">        <span class="keyword">self</span>.dismissViewControllerAnimated(<span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">        newphotoCollectionView.reloadData()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">imagePickerControllerDidCancel</span><span class="params">(picker: UIImagePickerController)</span></span> &#123;</span><br><span class="line">        dismissViewControllerAnimated(<span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a name="dispatch"></a> <strong>Background dispatch queues</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DispatchQueue</span>.global().async &#123;</span><br><span class="line">        <span class="built_in">print</span> (message)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a name="notification"></a> <strong>Notification</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// Define identifier</span></span><br><span class="line"><span class="keyword">let</span> notificationName = <span class="type">Notification</span>.<span class="type">Name</span>(<span class="string">"NotificationIdentifier"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Register to receive notification</span></span><br><span class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, </span><br><span class="line">    selector: #selector(<span class="type">YourClassName</span>.methodOfReceivedNotification), </span><br><span class="line">    name: notificationName, object: <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Post notification</span></span><br><span class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.post(name: notificationName, object: <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Stop listening notification</span></span><br><span class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.removeObserver(<span class="keyword">self</span>, name: notificationName, object: <span class="literal">nil</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a name="pushviewcontroller"></a> <strong>Push viewController</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> storyboard = <span class="type">UIStoryboard</span>(name: <span class="string">"ContentDelivery"</span>, bundle: <span class="literal">nil</span>)</span><br><span class="line"><span class="keyword">let</span> webViewController = storyboard.instantiateViewControllerWithIdentifier(<span class="string">"ContentDeliveryWebViewController"</span>) <span class="keyword">as</span>! <span class="type">ContentDeliveryWebViewController</span></span><br><span class="line">webViewController.url = url</span><br><span class="line">webViewController.title = content.key</span><br><span class="line"><span class="keyword">self</span>.navigationController?.pushViewController(webViewController, animated: <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a name="presentviewcontroller"></a> <strong>Present viewController</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">toNextViewController</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">let</span> storyboard = <span class="type">UIStoryboard</span>(name: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>)</span><br><span class="line">  <span class="keyword">var</span> nextVc:<span class="type">UIViewController</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">let</span> a = <span class="type">AVUser</span>.currentUser() &#123;</span><br><span class="line">      nextVc = storyboard.instantiateViewControllerWithIdentifier(<span class="string">"tabbar"</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      nextVc = storyboard.instantiateViewControllerWithIdentifier(<span class="string">"login"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">self</span>.window?.rootViewController = nextVc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a name="timerTask"></a> <strong>To start a timer task</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer = <span class="type">Timer</span>()</span><br><span class="line"><span class="keyword">self</span>.timer = <span class="type">Timer</span>.scheduledTimer(timeInterval: <span class="number">5.0</span>,</span><br><span class="line">                            target: <span class="keyword">self</span>,</span><br><span class="line">                            selector: #selector(<span class="keyword">self</span>.checkSensor),</span><br><span class="line">                            userInfo: <span class="literal">nil</span>,</span><br><span class="line">                            repeats: <span class="literal">true</span>)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkSensor</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a name="checkiteminarray"></a> <strong> To check an item exist in Array</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="type">Array</span>(sensorsid.keys).<span class="built_in">contains</span>(messageid)&#123;</span><br><span class="line">              processSensorMessage(json: json, index: messageid)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+
+            <footer>
+    <div>© 2019 - Jiang Nanqing </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

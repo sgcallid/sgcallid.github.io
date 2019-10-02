@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>AWS | JIANG NAN&#39;s BLOG</title>
+  <title>Summary of Swift 3 | JIANG NAN&#39;s BLOG</title>
   
   
   
@@ -47,17 +47,21 @@
             <div>
   <article class='ContentView'>
     <header class='PageTitle'>
-        <h1>AWS</h1>
+        <h1>Summary of Swift 3</h1>
     </header>
 
     <section>
-      <ul>
-<li><p>After create EC2 instance</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 400 /path/my_key_pair.pem</span><br><span class="line">$ ssh -i /path/my_key_pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com</span><br></pre></td></tr></table></figure>
+      <ol>
+<li><p>Random value</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> random = <span class="type">Int</span>(arc4random_uniform(<span class="type">UInt32</span>(mrtStations.<span class="built_in">count</span>)))</span><br><span class="line">astation  = mrtStations[random]</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Transfering file to instance</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp -i /path/my_key_pair.pem /path/SampleFile.txt ec2-user@ec2-198-51-100.1.compute-1.amazonaws.com</span><br></pre></td></tr></table></figure></li>
-</ul>
+<li><p>Remove alphabet from string</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a1 = <span class="type">Int</span>(b1.trimmingCharacters(<span class="keyword">in</span>: <span class="type">CharacterSet</span>(charactersIn: <span class="string">"01234567890."</span>).inverted))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Check seconds from today midnight</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> t = <span class="type">Calendar</span>.current.startOfDay(<span class="keyword">for</span>: <span class="type">Date</span>())</span><br><span class="line"><span class="keyword">let</span> d = <span class="type">Date</span>()</span><br><span class="line"><span class="keyword">let</span> e = <span class="type">Int</span>(d.timeIntervalSince(t))</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
 
       
@@ -67,15 +71,15 @@
       <section class='ArticleMeta'>
           <div>
             发布于&nbsp;
-            <time datetime="2018-01-31T16:00:00.000Z" itemprop="datePublished">
-              2018-02-01
+            <time datetime="2017-07-12T16:00:00.000Z" itemprop="datePublished">
+              2017-07-13
             </time>
           </div>
           
             <div>
               tags: 
   <li class="meta-text">
-  { <a href="/tags/AWS/">AWS</a> }
+  { <a href="/tags/iOS/">iOS</a> }
   </li>
 
 
