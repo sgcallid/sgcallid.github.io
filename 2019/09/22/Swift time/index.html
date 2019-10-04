@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Summary of Swift 2 | JIANG NAN&#39;s BLOG</title>
+  <title>Swift time operation | JIANG NAN&#39;s BLOG</title>
   <meta name="keywords" content=" iOS ">
-  <meta name="description" content="Summary of Swift 2 | JIANG NAN&#39;s BLOG">
+  <meta name="description" content="Swift time operation | JIANG NAN&#39;s BLOG">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Swift time operation Get seconds since today midnight  let t = Calendar.current.startOfDay(for: Date())  let d = Date()  let e = Int(d.timeIntervalSince(t))   Convert Date to String  var msg = &amp;quot;&amp;">
 <meta name="keywords" content="iOS">
@@ -388,9 +388,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Swift summary 2" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Swift time" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Summary of Swift 2</h1>
+        <h1 class="article-title">Swift time operation</h1>
     
     <div class="article-meta">
         
@@ -412,7 +412,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-03 10:40:32'>2017-05-13 00:00</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-04 10:56:53'>2019-09-22 00:00</time>
         
     </div>
     <div class="article-meta">
@@ -423,7 +423,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Swift-time-operation"><span class="toc-text">Swift time operation</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -439,152 +439,47 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li><a href="#UISwitch">UISwitch</a>: UISwitch usage</li>
-<li><a href="#Animation">Animation</a>: Animation usage</li>
-<li><a href="#ArrayRemove">Array remove item</a>: Remove item from Array</li>
-<li><a href="#AlertController">Add UIAlertcontroller on iPad</a>: Add alertcontroller on iPad</li>
-<li><a href="#NSPredicate">NSPredicate</a>: How to use NSPredicate</li>
-<li><a href="#Motiondetect">Motiondetect</a>: How to detect motion in viewcontroller</li>
-<li><a href="#Playsound">Playsound</a>: Play system sound</li>
-<li><a href="#gradientcolor">Add gradient color</a>: Add gradient color to view controller</li>
-<li><a href="#userdefault">User default</a>: Read/Write userdefault settings</li>
-<li><a href="#system notification">System notification</a>: How to oberserve system notification</li>
-</ol>
-<ol>
-<li><p><a name="UISwitch"></a> <strong>UISwitch usage</strong></p>
-<ul>
-<li>Toggle UISwitch status<pre><code class="Swift">@IBAction func toggleAlarm(_ sender:AnyObject) {
-if alarmSwitch.isOn {
-  mute = false
-  alarmSwitch.setOn(mute, animated: true)
-} else {
-  mute = true
-  alarmSwitch.setOn(mute, animated: true)
-}
-}
+        <h2 id="Swift-time-operation"><a href="#Swift-time-operation" class="headerlink" title="Swift time operation"></a>Swift time operation</h2><ol>
+<li><p>Get seconds since today midnight</p>
+<pre><code class="swift"> let t = Calendar.current.startOfDay(for: Date())
+ let d = Date()
+ let e = Int(d.timeIntervalSince(t))
 </code></pre>
 </li>
-</ul>
-</li>
-<li><p><a name="Animation"></a> <strong>Animation usage</strong></p>
-<ul>
-<li>Simple blink animation.<pre><code class="Swift">if isBlink {
-  cell.textLabel?.textColor = UIColor.red
-  UIView.animate(withDuration: 1.0, delay: 0.0, options: [.allowUserInteraction, .repeat], animations: {
-  cell.textLabel?.alpha = 0.5
-  }, completion: { (finished:Bool) -&gt; Void in
-  })
-} else {
-  UIView.animate(withDuration: 0.1, delay: 0.0, options: [.allowUserInteraction], animations: { 
-  cell.textLabel?.alpha = 1.0
-  }, completion: { (finished:Bool) -&gt; Void in
-  })
-  cell.textLabel?.textColor = UIColor.white
-}
+<li><p>Convert Date to String</p>
+<pre><code class="swift"> var msg = &quot;&quot;
+ let dateformatter = DateFormatter()
+ dateformatter.dateFormat = &quot;HH:mm:ss&quot;
+ msg = msg + dateformatter.string(from: timestamp)
 </code></pre>
 </li>
-</ul>
-</li>
-<li><p><a name="ArrayRemove"></a> <strong>Remove an item from array</strong></p>
-<ul>
-<li>Remove a string from string array.<pre><code class="Swift">blinkSensorName = Array(blinkSensorName.filter() {$0 != sName})
+<li><p>Convert time difference to String</p>
+<pre><code class="swift"> let ct = Date()
+ var ts = &quot;&quot;
+ var ms = &quot;&quot;
+ var ss = &quot;&quot;
+ if a.alarmStatus {
+ let components = Calendar.current.dateComponents([.minute, .second], from: a.alarmtimestamp, to: ct)
+ ms = &quot;\(components.minute ?? 0):&quot;
+ ss = &quot;\(components.second ?? 0)&quot;
+ ts = ms + ss
+ }
+ cell.bedLabel.text = ts
 </code></pre>
 </li>
-</ul>
-</li>
-<li><p><a name="AlertController"></a> <strong>Add UIAlertController on ipad navigation bar button</strong></p>
-<ul>
-<li>After add barbutton item on navigation bar.<pre><code class="Swift">func menu() {
-let alertcontroller = UIAlertController(title: &quot;Menu&quot;, message: &quot;Select&quot;, preferredStyle: .actionSheet)
-let startAction = UIAlertAction(title: startstop, style: .default) { (_) -&gt; Void in
-   print (&quot;Start button in Menu&quot;)
-   self.startComm(&quot;a&quot; as AnyObject)
-}
-let cancelaction = UIAlertAction(title: &quot;Cancel&quot;, style: .default, handler: nil)
-alertcontroller.addAction(startAction)
-alertcontroller.addAction(cancelaction)
-alertcontroller.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-present(alertcontroller, animated: false, completion: nil)
-}
+<li><p>Check current time and call function</p>
+<pre><code class="swift"> if Calendar.current.component(.minute, from: Date()) == 0
+ &amp;&amp; Calendar.current.component(.second, from: Date()) &lt; 5
+ &amp;&amp; turningClock.contains(Calendar.current.component(.hour, from: Date())) {
+ NotificationCenter.default.post(name: strokeBedNotification, object: nil)
+ }
 </code></pre>
 </li>
-</ul>
-</li>
-<li><p><a name="NSPredicate"></a> <strong>Simple example on how to use NSPredicate</strong></p>
-<ul>
-<li>Query record from Realm database.<pre><code class="Swift">let dateformatter = DateFormatter()
-let dtstring = &quot;2017-06-08 19:00:00&quot;
-dateformatter.dateFormat = &quot;YYYY-MM-dd HH:mm:ss&quot;
-let dt:Date = dateformatter.date(from:dtstring)!
-let ht = &quot;heartbeat&quot;
-let predicate = NSPredicate(format: &quot;timestamp &gt;= %@ AND status != %@&quot;, dt as CVarArg, ht as CVarArg)
-let queryrecord = realm.objects(record.self).filter(predicate)
+<li><p>Get weekday of a date</p>
+<pre><code class="swift"> let day = Date()
+ let calendar = Calendar(identifier: .gregorian)
+ let wd = calendar.component(.weekday, from: day)
 </code></pre>
-</li>
-</ul>
-</li>
-<li><p><a name="Motiondetect"></a> <strong>Detect motion in viewcontroller</strong></p>
-<ul>
-<li>Override func in viewcontroller.<pre><code class="Swift">override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
-  if motion == .MotionShake {
-  self.saveThisSong()
-  }
-}
-</code></pre>
-</li>
-</ul>
-</li>
-<li><p><a name="Playsound"></a> <strong>Play system sound</strong></p>
-<ul>
-<li>Play system sound once.<pre><code class="Swift">let systemSoudID:SystemSoundID = 1016
-AudioServicesPlaySystemSound(systemSoudID)
-</code></pre>
-</li>
-</ul>
-</li>
-<li><p><a name="gradientcolor"></a> <strong> Gradient color to view controller</strong></p>
-<ul>
-<li>Add gradient color to background<pre><code class="Swift">let gradient = CAGradientLayer()
-gradient.frame = self.view.bounds
-gradient.colors = [UIColor.blue.cgColor, UIColor.green.cgColor]
-self.view.layer.insertSublayer(gradient, at: 0)
-</code></pre>
-</li>
-</ul>
-</li>
-<li><p><a name="userdefault"></a> <strong> Read and write user default setting</strong></p>
-<ul>
-<li><p>Read and write user default</p>
-<pre><code class="Swift">let defaults = UserDefaults.standard
-defaults.set(owner, forKey: RecordField.owner.rawValue)
-
-let defaults = UserDefaults.standard
-if let o = defaults.string(forKey: RecordField.owner.rawValue) {
-  print (o)
-}
-</code></pre>
-</li>
-</ul>
-</li>
-<li><p><a name="system notification"></a> <strong> How to use system notification </strong></p>
-<ul>
-<li>Add and post notification<pre><code class="Swift">let busstopNotification = Notification.Name(&quot;busStopNotification&quot;)
-let notifydict = [&quot;number&quot;: self.number]
-NotificationCenter.default.post(name: busstopNotification, object: nil, userInfo: notifydict)
-</code></pre>
-</li>
-<li>Observe the notification<pre><code class="Swift">NotificationCenter.default.addObserver(self, selector: #selector(updateSchedule), name: busstopNotification, object: nil)
-func updateSchedule(notification: NSNotification) {
-  if let n = notification.userInfo?[&quot;number&quot;] as? String {
-  }
-}
-deinit {
-  NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: &quot;UIApplicationDidBecomeActiveNotification&quot;), object: nil)
-}
-</code></pre>
-</li>
-</ul>
 </li>
 </ol>
 
@@ -596,12 +491,12 @@ deinit {
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Summary of Swift 2</p>
+    <p><span class="copy-title">文章标题:</span>Swift time operation</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Jiang Nanqing">Jiang Nanqing</a></p>
-    <p><span class="copy-title">发布时间:</span>2017-05-13, 00:00:00</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-03, 10:40:32</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2017/05/13/Swift summary 2/" title="Summary of Swift 2">http://yoursite.com/2017/05/13/Swift summary 2/</a>
+    <p><span class="copy-title">发布时间:</span>2019-09-22, 00:00:00</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-04, 10:56:53</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/22/Swift time/" title="Swift time operation">http://yoursite.com/2019/09/22/Swift time/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
